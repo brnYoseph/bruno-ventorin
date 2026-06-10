@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm remove *)",
+      "Bash(npm uninstall *)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\brnve\\\\Webdev\\\\Aligna\"; $env:PATH = \"$env:APPDATA\\\\npm;$env:PATH\"; npx pnpm remove @vercel/analytics 2>&1)",
+      "PowerShell(Get-Command node, pnpm, npm -ErrorAction SilentlyContinue)"
+    ]
+  }
+}
