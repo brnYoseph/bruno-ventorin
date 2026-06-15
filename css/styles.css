@@ -156,7 +156,27 @@ section.block{padding:96px 0;border-top:1px solid var(--line)}
 .clist .ico{width:38px;height:38px;border:1px solid rgba(244,240,231,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .contact .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;font-size:1.05rem;padding:16px 30px}
 .contact .btn-primary:hover{background:#fff;color:var(--ink)}
-.contact-cta{align-self:center}
+.contact-cta{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:24px;
+  align-self:center;
+}
+.contact-photo{
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.contact-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform:scaleX(-1);
+}
 
 footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0;border-top:1px solid rgba(244,240,231,.12)}
 .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:.86rem}
