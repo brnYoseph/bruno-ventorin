@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicações · Bruno Ventorin</title>
+  <meta name="description" content="Artigos e vídeos sobre facilitação estratégica, design sprint e estratégia de produto." />
+  <link rel="icon" type="image/svg+xml" href="../public/images/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../public/images/favicon/favicon-32x32.png">
+  <link rel="shortcut icon" href="../public/images/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <header id="hdr">
+    <div class="container hdr">
+      <a href="/" class="wordmark">Bruno Ventorin<span>.</span></a>
+      <nav class="main">
+        <a href="/#servicos">O que faço</a>
+        <a href="/#metodo">Como trabalho</a>
+        <a href="/#experiencia">Experiência</a>
+        <a href="/blog/" aria-current="page">Publicações</a>
+        <a href="/#contato" class="btn btn-primary">Vamos conversar</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu" onclick="location.href='/#contato'">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <div class="container">
+        <span class="eyebrow reveal">Publicações</span>
+        <h1 class="reveal">Artigos e vídeos<br/>sobre o que funciona na prática.</h1>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="blog-controls reveal">
+        <div class="blog-filters" role="tablist" aria-label="Filtrar publicações">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+          <button class="filter-btn" data-filter="article" role="tab" aria-selected="false">Artigos</button>
+          <button class="filter-btn" data-filter="video" role="tab" aria-selected="false">Vídeos</button>
+        </div>
+        <div class="blog-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" id="searchInput" placeholder="Buscar publicações…" aria-label="Buscar publicações" />
+        </div>
+      </div>
+
+      <div id="postGrid" class="blog-grid" role="list" aria-live="polite" aria-label="Lista de publicações"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <span class="wordmark">Bruno Ventorin</span>
+      <span>Facilitação estratégica · Campinas, SP</span>
+      <span>© 2026 Bruno Ventorin</span>
+    </div>
+    <div class="container foot-cc">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener license" aria-label="Licença Creative Commons BY-NC-SA 4.0">
+        <img src="../public/images/cc_by-bc-sa.png" alt="CC BY-NC-SA 4.0" />
+      </a>
+      <span>O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.</span>
+    </div>
+  </footer>
+
+  <script>
+    // header scroll
+    const hdr = document.getElementById('hdr');
+    addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10));
+
+    // reveal on scroll
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    let allPosts = [];
+    let currentFilter = 'all';
+    let searchTimer;
+
+    async function loadPosts() {
+      try {
+        const res = await fetch('../content/posts.json');
+        if (!res.ok) throw new Error('Falha ao carregar publicações');
+        const data = await res.json();
+        allPosts = (data.posts || [])
+          .filter(p => p.published)
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+        renderPosts();
+      } catch (err) {
+        document.getElementById('postGrid').innerHTML =
+          '<div class="blog-empty"><p>Não foi possível carregar as publicações. Tente novamente.</p></div>';
+      }
+    }
+
+    function renderPosts() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      let list = allPosts;
+
+      if (currentFilter !== 'all') list = list.filter(p => p.type === currentFilter);
+      if (q) list = list.filter(p =>
+        p.title.toLowerCase().includes(q) ||
+        p.summary.toLowerCase().includes(q) ||
+        (p.tags || []).some(t => t.toLowerCase().includes(q))
+      );
+
+      const grid = document.getElementById('postGrid');
+      if (!list.length) {
+        grid.innerHTML = '<div class="blog-empty"><p>Nenhuma publicação encontrada.</p></div>';
+        return;
+      }
+
+      grid.innerHTML = list.map(cardHTML).join('');
+      grid.querySelectorAll('.post-card').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 3 * .06) + 's';
+        io.observe(el);
+      });
+    }
+
+    function cardHTML(post) {
+      const thumb = post.type === 'video' && post.youtube_id
+        ? `<div class="post-card-thumb"><img src="https://img.youtube.com/vi/${post.youtube_id}/hqdefault.jpg" alt="${escHtml(post.title)}" loading="lazy"></div>`
+        : '';
+      const date = new Date(post.date + 'T12:00:00').toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+      const label = post.type === 'video' ? 'Vídeo' : 'Artigo';
+      return `<article class="post-card" role="listitem">
+        ${thumb}
+        <div class="post-card-body">
+          <span class="post-badge ${post.type}">${label}</span>
+          <h3><a href="post.html?id=${encodeURIComponent(post.id)}">${escHtml(post.title)}</a></h3>
+          <p class="post-summary">${escHtml(post.summary)}</p>
+          <span class="post-date">${date}</span>
+        </div>
+      </article>`;
+    }
+
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        currentFilter = btn.dataset.filter;
+        renderPosts();
+      });
+    });
+
+    // search with debounce
+    document.getElementById('searchInput').addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(renderPosts, 220);
+    });
+
+    loadPosts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicação · Bruno Ventorin</title>
+  <meta name="description" content="" />
+  <link rel="icon" type="image/svg+xml" href="../public/images/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../public/images/favicon/favicon-32x32.png">
+  <link rel="shortcut icon" href="../public/images/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <header id="hdr">
+    <div class="container hdr">
+      <a href="/" class="wordmark">Bruno Ventorin<span>.</span></a>
+      <nav class="main">
+        <a href="/#servicos">O que faço</a>
+        <a href="/#metodo">Como trabalho</a>
+        <a href="/#experiencia">Experiência</a>
+        <a href="/blog/" aria-current="page">Publicações</a>
+        <a href="/#contato" class="btn btn-primary">Vamos conversar</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu" onclick="location.href='/#contato'">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="padding-top:64px;padding-bottom:96px">
+      <a href="index.html" class="post-back reveal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Todas as publicações
+      </a>
+      <div id="postContent"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <span class="wordmark">Bruno Ventorin</span>
+      <span>Facilitação estratégica · Campinas, SP</span>
+      <span>© 2026 Bruno Ventorin</span>
+    </div>
+    <div class="container foot-cc">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener license" aria-label="Licença Creative Commons BY-NC-SA 4.0">
+        <img src="../public/images/cc_by-bc-sa.png" alt="CC BY-NC-SA 4.0" />
+      </a>
+      <span>O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const hdr = document.getElementById('hdr');
+    addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10));
+
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    async function loadPost() {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      if (!id) { renderError('Post não encontrado.'); return; }
+
+      try {
+        const res = await fetch('../content/posts.json');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const post = (data.posts || []).find(p => p.id === id && p.published);
+        if (!post) { renderError('Publicação não encontrada.'); return; }
+
+        document.title = post.title + ' · Bruno Ventorin';
+        document.querySelector('meta[name="description"]').content = post.summary;
+
+        post.type === 'video' ? renderVideo(post) : renderArticle(post);
+      } catch {
+        renderError('Não foi possível carregar esta publicação.');
+      }
+    }
+
+    function renderHeader(post) {
+      const date = new Date(post.date + 'T12:00:00').toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+      const label = post.type === 'video' ? 'Vídeo' : 'Artigo';
+      return `<div class="post-header reveal">
+        <span class="post-badge ${post.type}">${label}</span>
+        <h1>${escHtml(post.title)}</h1>
+        <p class="post-meta">${date}</p>
+      </div>`;
+    }
+
+    function renderArticle(post) {
+      marked.setOptions({ breaks: true, gfm: true });
+      const html = marked.parse(post.content || '');
+      document.getElementById('postContent').innerHTML =
+        renderHeader(post) +
+        `<div class="post-content reveal">${html}</div>`;
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
+
+    function renderVideo(post) {
+      const embed = post.youtube_id
+        ? `<div class="yt-wrap reveal">
+            <iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(post.youtube_id)}"
+              title="${escHtml(post.title)}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>`
+        : '';
+
+      marked.setOptions({ breaks: true, gfm: true });
+      const desc = post.content
+        ? `<div class="post-description reveal"><div class="post-content">${marked.parse(post.content)}</div></div>`
+        : '';
+
+      document.getElementById('postContent').innerHTML = renderHeader(post) + embed + desc;
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
+
+    function renderError(msg) {
+      document.getElementById('postContent').innerHTML =
+        `<p style="color:var(--ink-soft);padding:48px 0">${escHtml(msg)}</p>`;
+    }
+
+    loadPost();
+  </script>
+</body>
+</html>

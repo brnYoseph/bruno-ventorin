@@ -22,3 +22,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# CMS — nunca commitar tokens ou segredos
+*.pat
+.pat
+secrets.*
+
+# OS
+.DS_Store
+Thumbs.db

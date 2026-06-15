@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMS · Bruno Ventorin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="screenLogin" class="auth-wrap" style="display:none">
+    <div class="auth-card">
+      <div class="auth-logo">Bruno Ventorin<span>.</span></div>
+      <h2>Acesso ao CMS</h2>
+      <p>Digite sua senha de administrador para continuar.</p>
+      <div id="loginError" class="auth-error"></div>
+      <div class="field">
+        <label for="pwdInput">Senha</label>
+        <input type="password" id="pwdInput" autocomplete="current-password" placeholder="••••••••" />
+      </div>
+      <button id="btnLogin" class="auth-btn">Entrar</button>
+    </div>
+  </div>
+
+  <!-- PAT SCREEN -->
+  <div id="screenPat" class="auth-wrap" style="display:none">
+    <div class="auth-card">
+      <div class="auth-logo">Bruno Ventorin<span>.</span></div>
+      <h2>Token do GitHub</h2>
+      <p>Cole seu Personal Access Token (PAT) para habilitar a publicação. Ele fica salvo apenas nesta sessão.</p>
+      <div id="patError" class="auth-error"></div>
+      <div class="field">
+        <label for="patInput">GitHub PAT</label>
+        <input type="password" id="patInput" autocomplete="off" placeholder="github_pat_…" spellcheck="false" />
+      </div>
+      <button id="btnPat" class="auth-btn">Conectar</button>
+      <p class="auth-hint">
+        Crie um <strong>fine-grained PAT</strong> em GitHub → Settings → Developer settings → Personal access tokens.<br>
+        Permissão necessária: <code>Contents: Read and write</code> neste repositório. Configure uma data de expiração.
+      </p>
+    </div>
+  </div>
+
+  <!-- CMS -->
+  <div id="screenCms" class="cms-wrap">
+    <div class="cms-topbar">
+      <span class="cms-topbar-logo">Bruno Ventorin<span>.</span> <span style="font-family:inherit;font-weight:400;font-size:.82rem;color:#6B6560;margin-left:6px">CMS</span></span>
+      <div class="cms-topbar-actions">
+        <span id="topbarStatus" class="topbar-status"></span>
+        <button id="btnDraft" class="topbar-btn">Salvar rascunho</button>
+        <button id="btnDelete" class="topbar-btn danger">Excluir</button>
+        <button id="btnPublish" class="topbar-btn primary">Publicar →</button>
+        <button id="btnLogout" class="topbar-btn" title="Encerrar sessão">Sair</button>
+      </div>
+    </div>
+
+    <div class="cms-body">
+      <!-- SIDEBAR -->
+      <aside class="cms-sidebar">
+        <div class="sidebar-head">
+          <h3>Publicações</h3>
+          <button id="btnNewPost" class="new-post-btn" title="Novo post">+</button>
+        </div>
+        <div id="sidebarList" class="sidebar-list"></div>
+      </aside>
+
+      <!-- EDITOR -->
+      <div class="cms-editor">
+        <div id="editorPlaceholder" class="editor-placeholder">
+          <p>Selecione uma publicação na lista ou crie uma nova.</p>
+        </div>
+
+        <div id="editorForm" class="editor-form" style="display:none">
+          <div class="editor-meta">
+            <div class="meta-field" style="grid-column:1/4">
+              <label for="fieldTitle">Título</label>
+              <input type="text" id="fieldTitle" placeholder="Título da publicação" />
+            </div>
+
+            <div class="meta-field">
+              <label for="fieldType">Tipo</label>
+              <select id="fieldType">
+                <option value="article">Artigo</option>
+                <option value="video">Vídeo</option>
+              </select>
+            </div>
+
+            <div class="meta-field">
+              <label for="fieldDate">Data</label>
+              <input type="date" id="fieldDate" />
+            </div>
+
+            <div class="meta-field full">
+              <label for="fieldTags">Tags <span style="font-weight:400;text-transform:none;letter-spacing:0">(separadas por vírgula)</span></label>
+              <input type="text" id="fieldTags" placeholder="facilitação, produto, estratégia" />
+            </div>
+
+            <div class="meta-field full">
+              <label for="fieldSummary">Resumo <span style="font-weight:400;text-transform:none;letter-spacing:0">(aparece na listagem)</span></label>
+              <textarea id="fieldSummary" placeholder="Uma linha sobre o que o leitor vai encontrar aqui."></textarea>
+            </div>
+
+            <div class="meta-field yt-field full" id="ytField">
+              <label for="fieldYtId">YouTube ID <span style="font-weight:400;text-transform:none;letter-spacing:0">(ex: dQw4w9WgXcQ)</span></label>
+              <input type="text" id="fieldYtId" placeholder="ID do vídeo no YouTube" spellcheck="false" />
+            </div>
+
+            <div class="editor-toggle" id="publishedToggle">
+              <div class="toggle-switch" id="toggleSwitch"></div>
+              <span id="toggleLabel">Rascunho</span>
+            </div>
+          </div>
+
+          <div class="editor-split">
+            <div class="editor-pane">
+              <div class="editor-pane-head">Markdown</div>
+              <textarea id="fieldContent" placeholder="## Título&#10;&#10;Escreva em Markdown…" spellcheck="true"></textarea>
+            </div>
+            <div class="editor-pane">
+              <div class="editor-pane-head">Preview</div>
+              <div id="editorPreview" class="editor-preview"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="config.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>
