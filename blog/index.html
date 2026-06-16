@@ -27,64 +27,160 @@
     <div class="container hdr">
       <a href="/" class="wordmark">Bruno Ventorin<span>.</span></a>
       <nav class="main">
-        <a href="/#servicos">O que faço</a>
-        <a href="/#metodo">Como trabalho</a>
-        <a href="/#experiencia">Experiência</a>
-        <a href="/blog/" aria-current="page">Publicações</a>
-        <a href="/#contato" class="btn btn-primary">Vamos conversar</a>
+        <a href="/#servicos" data-i18n="nav_services">O que faço</a>
+        <a href="/#metodo" data-i18n="nav_method">Como trabalho</a>
+        <a href="/#experiencia" data-i18n="nav_experience">Experiência</a>
+        <a href="/blog/" aria-current="page" data-i18n="nav_blog">Publicações</a>
+        <div class="lang-switcher">
+          <button data-lang="pt" onclick="setLang('pt')">PT</button>
+          <span class="sep">·</span>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="/#contato" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
       </nav>
-      <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
+      <button class="menu-btn" data-i18n-aria="nav_menu_open" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
         <svg class="ico-menu" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
         <svg class="ico-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
       </button>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="/#servicos"    onclick="closeMenu()">O que faço</a>
-      <a href="/#metodo"      onclick="closeMenu()">Como trabalho</a>
-      <a href="/#experiencia" onclick="closeMenu()">Experiência</a>
-      <a href="/blog/"        onclick="closeMenu()">Publicações</a>
-      <a href="/#contato"     onclick="closeMenu()" class="btn btn-primary">Vamos conversar</a>
+      <a href="/#servicos"    onclick="closeMenu()" data-i18n="nav_services">O que faço</a>
+      <a href="/#metodo"      onclick="closeMenu()" data-i18n="nav_method">Como trabalho</a>
+      <a href="/#experiencia" onclick="closeMenu()" data-i18n="nav_experience">Experiência</a>
+      <a href="/blog/"        onclick="closeMenu()" data-i18n="nav_blog">Publicações</a>
+      <div class="lang-switcher mobile-lang">
+        <button data-lang="pt" onclick="setLang('pt')">PT</button>
+        <span class="sep">·</span>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="/#contato"     onclick="closeMenu()" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
     </nav>
   </header>
 
   <main>
     <section class="blog-hero">
       <div class="container">
-        <span class="eyebrow reveal">Publicações</span>
-        <h1 class="reveal">Artigos e vídeos<br/>sobre o que funciona na prática.</h1>
+        <span class="eyebrow reveal" data-i18n="blog_eyebrow">Publicações</span>
+        <h1 class="reveal" data-i18n-html="blog_h1">Artigos e vídeos<br/>sobre o que funciona na prática.</h1>
       </div>
     </section>
 
     <div class="container">
       <div class="blog-controls reveal">
-        <div class="blog-filters" role="tablist" aria-label="Filtrar publicações">
-          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-          <button class="filter-btn" data-filter="article" role="tab" aria-selected="false">Artigos</button>
-          <button class="filter-btn" data-filter="video" role="tab" aria-selected="false">Vídeos</button>
+        <div class="blog-filters" role="tablist" data-i18n-aria="filters_aria" aria-label="Filtrar publicações">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" data-i18n="filter_all">Todos</button>
+          <button class="filter-btn" data-filter="article" role="tab" aria-selected="false" data-i18n="filter_article">Artigos</button>
+          <button class="filter-btn" data-filter="video" role="tab" aria-selected="false" data-i18n="filter_video">Vídeos</button>
         </div>
         <div class="blog-search">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="search" id="searchInput" placeholder="Buscar publicações…" aria-label="Buscar publicações" />
+          <input type="search" id="searchInput" data-i18n-placeholder="search_placeholder" data-i18n-aria="search_aria" placeholder="Buscar publicações…" aria-label="Buscar publicações" />
         </div>
       </div>
 
-      <div id="postGrid" class="blog-grid" role="list" aria-live="polite" aria-label="Lista de publicações"></div>
+      <div id="postGrid" class="blog-grid" role="list" aria-live="polite" data-i18n-aria="grid_aria" aria-label="Lista de publicações"></div>
     </div>
   </main>
 
   <footer>
     <div class="container foot">
       <span class="wordmark">Bruno Ventorin<span>.</span></span>
-      <span>Facilitação estratégica · Campinas, SP</span>
+      <span data-i18n="foot_tagline">Facilitação estratégica · Campinas, SP</span>
       <span>© 2026 Bruno Ventorin</span>
     </div>
     <div class="container foot-cc">
-      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener license" aria-label="Licença Creative Commons BY-NC-SA 4.0">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener license" data-i18n-aria="cc_aria" aria-label="Licença Creative Commons BY-NC-SA 4.0">
         <img src="../public/images/cc_by-bc-sa.png" alt="CC BY-NC-SA 4.0" />
       </a>
-      <span>O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.</span>
+      <span data-i18n-html="cc_text">O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.</span>
     </div>
   </footer>
+
+  <script>
+    const T = {
+      pt: {
+        nav_services: 'O que faço',
+        nav_method: 'Como trabalho',
+        nav_experience: 'Experiência',
+        nav_blog: 'Publicações',
+        nav_cta: 'Vamos conversar',
+        nav_menu_open: 'Abrir menu',
+        blog_eyebrow: 'Publicações',
+        blog_h1: 'Artigos e vídeos<br/>sobre o que funciona na prática.',
+        filters_aria: 'Filtrar publicações',
+        filter_all: 'Todos',
+        filter_article: 'Artigos',
+        filter_video: 'Vídeos',
+        search_placeholder: 'Buscar publicações…',
+        search_aria: 'Buscar publicações',
+        grid_aria: 'Lista de publicações',
+        err_load: 'Não foi possível carregar as publicações. Tente novamente.',
+        err_empty: 'Nenhuma publicação encontrada.',
+        label_article: 'Artigo',
+        label_video: 'Vídeo',
+        foot_tagline: 'Facilitação estratégica · Campinas, SP',
+        cc_aria: 'Licença Creative Commons BY-NC-SA 4.0',
+        cc_text: 'O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.',
+      },
+      en: {
+        nav_services: 'What I do',
+        nav_method: 'How I work',
+        nav_experience: 'Experience',
+        nav_blog: 'Publications',
+        nav_cta: 'Let\'s talk',
+        nav_menu_open: 'Open menu',
+        blog_eyebrow: 'Publications',
+        blog_h1: 'Articles and videos<br/>on what actually works.',
+        filters_aria: 'Filter publications',
+        filter_all: 'All',
+        filter_article: 'Articles',
+        filter_video: 'Videos',
+        search_placeholder: 'Search publications…',
+        search_aria: 'Search publications',
+        grid_aria: 'Publications list',
+        err_load: 'Could not load publications. Please try again.',
+        err_empty: 'No publications found.',
+        label_article: 'Article',
+        label_video: 'Video',
+        foot_tagline: 'Strategic facilitation · Campinas, SP',
+        cc_aria: 'Creative Commons BY-NC-SA 4.0 License',
+        cc_text: 'This blog\'s content is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. You may share and adapt with attribution, non-commercially and under the same license.',
+      }
+    };
+
+    function getLang() {
+      return localStorage.getItem('lang') ||
+        (navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en');
+    }
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = T[lang][el.dataset.i18n];
+        if (v !== undefined) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = T[lang][el.dataset.i18nHtml];
+        if (v !== undefined) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const v = T[lang][el.dataset.i18nAria];
+        if (v !== undefined) el.setAttribute('aria-label', v);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const v = T[lang][el.dataset.i18nPlaceholder];
+        if (v !== undefined) el.placeholder = v;
+      });
+      document.querySelectorAll('.lang-switcher button').forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.lang === lang)
+      );
+      if (typeof window.onLangChange === 'function') window.onLangChange(lang);
+    }
+    applyLang(getLang());
+  </script>
 
   <script>
     function toggleMenu(btn) {
@@ -121,7 +217,7 @@
     async function loadPosts() {
       try {
         const res = await fetch('../content/posts.json');
-        if (!res.ok) throw new Error('Falha ao carregar publicações');
+        if (!res.ok) throw new Error();
         const data = await res.json();
         allPosts = (data.posts || [])
           .filter(p => p.published)
@@ -129,11 +225,12 @@
         renderPosts();
       } catch (err) {
         document.getElementById('postGrid').innerHTML =
-          '<div class="blog-empty"><p>Não foi possível carregar as publicações. Tente novamente.</p></div>';
+          `<div class="blog-empty"><p>${T[getLang()].err_load}</p></div>`;
       }
     }
 
     function renderPosts() {
+      const lang = getLang();
       const q = document.getElementById('searchInput').value.trim().toLowerCase();
       let list = allPosts;
 
@@ -146,11 +243,11 @@
 
       const grid = document.getElementById('postGrid');
       if (!list.length) {
-        grid.innerHTML = '<div class="blog-empty"><p>Nenhuma publicação encontrada.</p></div>';
+        grid.innerHTML = `<div class="blog-empty"><p>${T[lang].err_empty}</p></div>`;
         return;
       }
 
-      grid.innerHTML = list.map(cardHTML).join('');
+      grid.innerHTML = list.map(p => cardHTML(p, lang)).join('');
       grid.querySelectorAll('.post-card').forEach((el, i) => {
         el.classList.add('reveal');
         el.style.transitionDelay = (i % 3 * .06) + 's';
@@ -158,12 +255,13 @@
       });
     }
 
-    function cardHTML(post) {
+    function cardHTML(post, lang) {
       const thumb = post.type === 'video' && post.youtube_id
         ? `<div class="post-card-thumb"><img src="https://img.youtube.com/vi/${post.youtube_id}/hqdefault.jpg" alt="${escHtml(post.title)}" loading="lazy"></div>`
         : '';
-      const date = new Date(post.date + 'T12:00:00').toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
-      const label = post.type === 'video' ? 'Vídeo' : 'Artigo';
+      const locale = lang === 'pt' ? 'pt-BR' : 'en-US';
+      const date = new Date(post.date + 'T12:00:00').toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
+      const label = post.type === 'video' ? T[lang].label_video : T[lang].label_article;
       return `<article class="post-card" role="listitem">
         ${thumb}
         <div class="post-card-body">
@@ -198,6 +296,9 @@
       clearTimeout(searchTimer);
       searchTimer = setTimeout(renderPosts, 220);
     });
+
+    // re-render cards on language change (dates and labels)
+    window.onLangChange = renderPosts;
 
     loadPosts();
   </script>

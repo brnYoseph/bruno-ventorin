@@ -32,25 +32,35 @@
     <div class="container hdr">
       <a href="#top" class="wordmark">Bruno Ventorin<span>.</span></a>
       <nav class="main">
-        <a href="#servicos">O que faço</a>
-        <a href="#metodo">Como trabalho</a>
-        <a href="#experiencia">Experiência</a>
+        <a href="#servicos" data-i18n="nav_services">O que faço</a>
+        <a href="#metodo" data-i18n="nav_method">Como trabalho</a>
+        <a href="#experiencia" data-i18n="nav_experience">Experiência</a>
         <a href="#designops">DesignOps</a>
-        <a href="blog/">Publicações</a>
-        <a href="#contato" class="btn btn-primary">Vamos conversar</a>
+        <a href="blog/" data-i18n="nav_blog">Publicações</a>
+        <div class="lang-switcher">
+          <button data-lang="pt" onclick="setLang('pt')">PT</button>
+          <span class="sep">·</span>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="#contato" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
       </nav>
-      <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
+      <button class="menu-btn" data-i18n-aria="nav_menu_open" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
         <svg class="ico-menu" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
         <svg class="ico-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
       </button>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="#servicos"  onclick="closeMenu()">O que faço</a>
-      <a href="#metodo"    onclick="closeMenu()">Como trabalho</a>
-      <a href="#experiencia" onclick="closeMenu()">Experiência</a>
+      <a href="#servicos"  onclick="closeMenu()" data-i18n="nav_services">O que faço</a>
+      <a href="#metodo"    onclick="closeMenu()" data-i18n="nav_method">Como trabalho</a>
+      <a href="#experiencia" onclick="closeMenu()" data-i18n="nav_experience">Experiência</a>
       <a href="#designops" onclick="closeMenu()">DesignOps</a>
-      <a href="blog/"      onclick="closeMenu()">Publicações</a>
-      <a href="#contato"   onclick="closeMenu()" class="btn btn-primary">Vamos conversar</a>
+      <a href="blog/"      onclick="closeMenu()" data-i18n="nav_blog">Publicações</a>
+      <div class="lang-switcher mobile-lang">
+        <button data-lang="pt" onclick="setLang('pt')">PT</button>
+        <span class="sep">·</span>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#contato"   onclick="closeMenu()" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
     </nav>
   </header>
 
@@ -64,17 +74,17 @@
         <div class="dot"></div>
       </div>
       <div class="container hero-inner">
-        <span class="eyebrow reveal">Facilitação estratégica</span>
-        <h1 class="reveal">Da ambiguidade à decisão.<br/>Da decisão à <span class="em">entrega</span>.</h1>
-        <p class="lead reveal">Sou <strong>Bruno Ventorin</strong>. Há 17 anos conduzo times de produto e liderança a transformar problemas confusos em decisões claras e soluções tangíveis — independente da indústria.</p>
+        <span class="eyebrow reveal" data-i18n="hero_eyebrow">Facilitação estratégica</span>
+        <h1 class="reveal" data-i18n-html="hero_h1">Da ambiguidade à decisão.<br/>Da decisão à <span class="em">entrega</span>.</h1>
+        <p class="lead reveal" data-i18n-html="hero_lead">Sou <strong>Bruno Ventorin</strong>. Há 17 anos conduzo times de produto e liderança a transformar problemas confusos em decisões claras e soluções tangíveis — independente da indústria.</p>
         <div class="hero-actions reveal">
-          <a href="#contato" class="btn btn-primary">Vamos conversar <span class="arrow">→</span></a>
-          <a href="#metodo" class="btn btn-ghost">Como eu trabalho</a>
+          <a href="#contato" class="btn btn-primary"><span data-i18n="hero_cta1">Vamos conversar</span> <span class="arrow">→</span></a>
+          <a href="#metodo" class="btn btn-ghost" data-i18n="hero_cta2">Como eu trabalho</a>
         </div>
         <div class="stats reveal">
-          <div class="stat"><span class="n">17</span><span class="l">anos desenhando produtos, da estratégia à execução</span></div>
-          <div class="stat"><span class="n">7</span><span class="l">indústrias diferentes, conexões inesperadas</span></div>
-          <div class="stat"><span class="n">∞</span><span class="l">inovação sem teatro</span></div>
+          <div class="stat"><span class="n">17</span><span class="l" data-i18n="stat1_l">anos desenhando produtos, da estratégia à execução</span></div>
+          <div class="stat"><span class="n">7</span><span class="l" data-i18n="stat2_l">indústrias diferentes, conexões inesperadas</span></div>
+          <div class="stat"><span class="n">∞</span><span class="l" data-i18n="stat3_l">inovação sem teatro</span></div>
         </div>
       </div>
     </section>
@@ -83,42 +93,42 @@
     <section class="block" id="servicos">
       <div class="container">
         <div class="sec-head">
-          <span class="eyebrow">O que faço</span>
-          <h2>Conduzo o time até a decisão. Sem fórmula de prateleira.</h2>
-          <p>Três formas de trabalhar juntos — escolhidas pelo problema, não pelo catálogo.</p>
+          <span class="eyebrow" data-i18n="srv_eyebrow">O que faço</span>
+          <h2 data-i18n="srv_h2">Conduzo o time até a decisão. Sem fórmula de prateleira.</h2>
+          <p data-i18n="srv_p">Três formas de trabalhar juntos — escolhidas pelo problema, não pelo catálogo.</p>
         </div>
         <div class="cards">
           <article class="card">
             <span class="num">01</span>
-            <h3>Design Sprint</h3>
-            <p>Do enquadramento do problema ao protótipo testado em poucos dias — com uma etapa de framing antes e um caminho de implementação depois, pra não morrer na gaveta.</p>
+            <h3 data-i18n="c1_h3">Design Sprint</h3>
+            <p data-i18n="c1_p">Do enquadramento do problema ao protótipo testado em poucos dias — com uma etapa de framing antes e um caminho de implementação depois, pra não morrer na gaveta.</p>
             <ul>
-              <li>Enquadramento do problema certo</li>
-              <li>Ideação e decisão guiadas</li>
-              <li>Protótipo e teste com usuários</li>
-              <li>Roadmap de implementação</li>
+              <li data-i18n="c1_li1">Enquadramento do problema certo</li>
+              <li data-i18n="c1_li2">Ideação e decisão guiadas</li>
+              <li data-i18n="c1_li3">Protótipo e teste com usuários</li>
+              <li data-i18n="c1_li4">Roadmap de implementação</li>
             </ul>
           </article>
           <article class="card">
             <span class="num">02</span>
-            <h3>Facilitação de descoberta e estratégia</h3>
-            <p>Alinho stakeholders e transformo discussão dispersa em direção clara de produto — com método, sem reunião que não termina em nada.</p>
+            <h3 data-i18n="c2_h3">Facilitação de descoberta e estratégia</h3>
+            <p data-i18n="c2_p">Alinho stakeholders e transformo discussão dispersa em direção clara de produto — com método, sem reunião que não termina em nada.</p>
             <ul>
-              <li>Alinhamento de stakeholders</li>
-              <li>Descoberta e priorização</li>
-              <li>Visão e estratégia de produto</li>
-              <li>Decisões documentadas</li>
+              <li data-i18n="c2_li1">Alinhamento de stakeholders</li>
+              <li data-i18n="c2_li2">Descoberta e priorização</li>
+              <li data-i18n="c2_li3">Visão e estratégia de produto</li>
+              <li data-i18n="c2_li4">Decisões documentadas</li>
             </ul>
           </article>
           <article class="card">
             <span class="num">03</span>
-            <h3>Inception e alinhamento de times</h3>
-            <p>Coloco squads e liderança na mesma página: objetivos, papéis e visão compartilhada. Ideal para times novos ou que precisam de rumo.</p>
+            <h3 data-i18n="c3_h3">Inception e alinhamento de times</h3>
+            <p data-i18n="c3_p">Coloco squads e liderança na mesma página: objetivos, papéis e visão compartilhada. Ideal para times novos ou que precisam de rumo.</p>
             <ul>
-              <li>Objetivos e metas comuns</li>
-              <li>Clareza de papéis</li>
-              <li>Charter e rituais do time</li>
-              <li>Visão compartilhada</li>
+              <li data-i18n="c3_li1">Objetivos e metas comuns</li>
+              <li data-i18n="c3_li2">Clareza de papéis</li>
+              <li data-i18n="c3_li3">Charter e rituais do time</li>
+              <li data-i18n="c3_li4">Visão compartilhada</li>
             </ul>
           </article>
         </div>
@@ -129,30 +139,30 @@
     <section class="block" id="metodo">
       <div class="container">
         <div class="sec-head">
-          <span class="eyebrow">Como trabalho</span>
-          <h2>Sob medida, nunca templado.</h2>
-          <p>Cada time e cada problema é diferente. O processo se adapta ao seu contexto — não o contrário.</p>
+          <span class="eyebrow" data-i18n="mth_eyebrow">Como trabalho</span>
+          <h2 data-i18n="mth_h2">Sob medida, nunca templado.</h2>
+          <p data-i18n="mth_p">Cada time e cada problema é diferente. O processo se adapta ao seu contexto — não o contrário.</p>
         </div>
         <div class="steps">
           <div class="step">
             <span class="sn">01</span>
-            <h3>Entender</h3>
-            <p>Mergulho no problema real antes de qualquer dinâmica. Sprint no problema errado é tempo e dinheiro jogados fora.</p>
+            <h3 data-i18n="s1_h3">Entender</h3>
+            <p data-i18n="s1_p">Mergulho no problema real antes de qualquer dinâmica. Sprint no problema errado é tempo e dinheiro jogados fora.</p>
           </div>
           <div class="step">
             <span class="sn">02</span>
-            <h3>Desenhar</h3>
-            <p>Abordagem sob medida. Sem fórmula de prateleira.</p>
+            <h3 data-i18n="s2_h3">Desenhar</h3>
+            <p data-i18n="s2_p">Abordagem sob medida. Sem fórmula de prateleira.</p>
           </div>
           <div class="step">
             <span class="sn">03</span>
-            <h3>Facilitar</h3>
-            <p>Conduzo o time à decisão — com método e ritmo, sem teatro.</p>
+            <h3 data-i18n="s3_h3">Facilitar</h3>
+            <p data-i18n="s3_p">Conduzo o time à decisão — com método e ritmo, sem teatro.</p>
           </div>
           <div class="step">
             <span class="sn">04</span>
-            <h3>Entregar</h3>
-            <p>Saída concreta: protótipo testado, roadmap, acompanhamento: um caminho de implementação, não um slide bonito.</p>
+            <h3 data-i18n="s4_h3">Entregar</h3>
+            <p data-i18n="s4_p">Saída concreta: protótipo testado, roadmap, acompanhamento: um caminho de implementação, não um slide bonito.</p>
           </div>
         </div>
       </div>
@@ -162,12 +172,12 @@
     <section class="block" id="experiencia">
       <div class="container exp-wrap">
         <div class="exp-copy">
-          <span class="eyebrow">Experiência</span>
-          <h2>A amplitude é o diferencial.</h2>
-          <p>Atuei em projetos de produto e facilitação para empresas de setores que quase não se falam — de agro e banco a manufatura, de mídia a utilities.</p>
-          <p>É isso que eu trago pra mesa: o quê funcionou aplicado onde ninguém ainda tentou. Pensamento cross-setor, na prática.</p>
+          <span class="eyebrow" data-i18n="exp_eyebrow">Experiência</span>
+          <h2 data-i18n="exp_h2">A amplitude é o diferencial.</h2>
+          <p data-i18n="exp_p1">Atuei em projetos de produto e facilitação para empresas de setores que quase não se falam — de agro e banco a manufatura, de mídia a utilities.</p>
+          <p data-i18n="exp_p2">É isso que eu trago pra mesa: o quê funcionou aplicado onde ninguém ainda tentou. Pensamento cross-setor, na prática.</p>
         </div>
-        <div class="logos" aria-label="Empresas em cujos projetos atuei">
+        <div class="logos" data-i18n-aria="exp_logos_aria" aria-label="Empresas em cujos projetos atuei">
           <span><img src="public/images/clientes/normalized_bradesco.png" alt="Bradesco"></span>
           <span><img src="public/images/clientes/normalized_santander.png" alt="Santander"></span>
           <span><img src="public/images/clientes/normalized_logo_globo_corporativa_principal_preto.png" alt="Globo"></span>
@@ -187,41 +197,41 @@
       <div class="container">
         <div class="sec-head">
           <span class="eyebrow">DesignOps &amp; ProductOps</span>
-          <h2>Estrutura que não engessa. Operação que escala.</h2>
-          <p>Reestruturação de times e processos de design e produto em três pilares — com integração nativa de ferramentas de IA para automatizar o que pode ser automatizado e liberar capacidade para o que importa de verdade. <span class="accent">Sem hype. Com pensamento crítico.</span></p>
+          <h2 data-i18n="dop_h2">Estrutura que não engessa. Operação que escala.</h2>
+          <p data-i18n-html="dop_p">Reestruturação de times e processos de design e produto em três pilares — com integração nativa de ferramentas de IA para automatizar o que pode ser automatizado e liberar capacidade para o que importa de verdade. <span class="accent">Sem hype e com pensamento crítico.</span></p>
         </div>
         <div class="cards">
           <article class="card">
             <span class="num">01</span>
-            <h3>Prática</h3>
-            <p>Como a coisa é feita. Eficácia operacional, processos e ferramentas — incluindo automação de workflows com IA onde faz diferença real.</p>
+            <h3 data-i18n="dp1_h3">Prática</h3>
+            <p data-i18n="dp1_p">Como a coisa é feita. Eficácia operacional, processos e ferramentas — incluindo automação de workflows.</p>
             <ul>
-              <li>Mapeamento e redesenho de processos</li>
-              <li>Ferramentas e stack de design</li>
-              <li>Automação de workflows com IA</li>
-              <li>Rituais e cadências de equipe</li>
+              <li data-i18n="dp1_li1">Mapeamento e redesenho de processos</li>
+              <li data-i18n="dp1_li2">Ferramentas e stack de design</li>
+              <li data-i18n="dp1_li3">Automação de workflows com IA</li>
+              <li data-i18n="dp1_li4">Rituais e cadências de equipe</li>
             </ul>
           </article>
           <article class="card">
             <span class="num">02</span>
-            <h3>Pessoas</h3>
-            <p>Quem faz o quê e como crescem. Cargos, cultura e comunidades que fazem um time de produto funcionar de verdade — em qualquer escala.</p>
+            <h3 data-i18n="dp2_h3">Pessoas</h3>
+            <p data-i18n="dp2_p">Quem faz o quê e como crescem. Cargos, cultura e comunidades que fazem um time de produto funcionar de verdade — em qualquer escala.</p>
             <ul>
-              <li>Estrutura de cargos e senioridade</li>
-              <li>Trilhas de crescimento</li>
-              <li>Cultura de design e produto</li>
-              <li>Comunidades de prática</li>
+              <li data-i18n="dp2_li1">Estrutura de cargos e senioridade</li>
+              <li data-i18n="dp2_li2">Trilhas de crescimento</li>
+              <li data-i18n="dp2_li3">Cultura de design e produto</li>
+              <li data-i18n="dp2_li4">Comunidades de prática</li>
             </ul>
           </article>
           <article class="card">
             <span class="num">03</span>
-            <h3>Plataforma</h3>
-            <p>A infraestrutura que sustenta times que crescem. Métricas, maturidade e escalabilidade operacional — com suporte de IA onde faz sentido.</p>
+            <h3 data-i18n="dp3_h3">Plataforma</h3>
+            <p data-i18n="dp3_p">A infraestrutura que sustenta times que crescem. Métricas, maturidade e escalabilidade operacional.</p>
             <ul>
-              <li>Métricas e dashboards de operação</li>
-              <li>Modelo de maturidade de design</li>
-              <li>Escalabilidade de processos</li>
-              <li>Integração e suporte com IA</li>
+              <li data-i18n="dp3_li1">Métricas e dashboards de operação</li>
+              <li data-i18n="dp3_li2">Modelo de maturidade de design</li>
+              <li data-i18n="dp3_li3">Escalabilidade de processos</li>
+              <li data-i18n="dp3_li4">Integração e suporte com IA</li>
             </ul>
           </article>
         </div>
@@ -233,9 +243,9 @@
       <div class="container">
         <div class="contact-grid">
           <div>
-            <span class="eyebrow">Vamos conversar</span>
-            <h2>Quer destravar soluções e estratégias?</h2>
-            <p class="cd">Me conta o desafio. A gente vê juntos o melhor método para resolver o seu problema — e como seria na prática.</p>
+            <span class="eyebrow" data-i18n="cnt_eyebrow">Vamos conversar</span>
+            <h2 data-i18n="cnt_h2">Quer destravar soluções e estratégias?</h2>
+            <p class="cd" data-i18n="cnt_p">Me conta o desafio. A gente vê juntos o melhor método para resolver o seu problema — e como seria na prática.</p>
             <div class="clist">
               <a href="mailto:contato@brunoventorin.com.br">
                 <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
@@ -255,7 +265,7 @@
             <div class="contact-photo">
               <img src="public/images/profile.jpg" alt="Bruno Ventorin">
             </div>
-            <a href="mailto:contato@brunoventorin.com.br?subject=Conversa%20sobre%20facilita%C3%A7%C3%A3o" class="btn btn-primary">Mandar uma mensagem <span class="arrow">→</span></a>
+            <a href="mailto:contato@brunoventorin.com.br?subject=Conversa%20sobre%20facilita%C3%A7%C3%A3o" class="btn btn-primary"><span data-i18n="cnt_cta">Mandar uma mensagem</span> <span class="arrow">→</span></a>
           </div>
         </div>
       </div>
@@ -265,10 +275,208 @@
   <footer>
     <div class="container foot">
       <span class="wordmark">Bruno Ventorin<span>.</span></span>
-      <span>Facilitação estratégica · Campinas, SP</span>
+      <span data-i18n="foot_tagline">Facilitação estratégica · Campinas, SP</span>
       <span>© 2026 Bruno Ventorin</span>
     </div>
   </footer>
+
+  <script>
+    const T = {
+      pt: {
+        meta_title: 'Bruno Ventorin · Facilitação estratégica',
+        meta_description: 'Há 17 anos conduzo times de produto e liderança a sair da ambiguidade e chegar a decisões claras e protótipos testados — em finanças, mídia, indústria e utilities.',
+        meta_og_description: 'Da ambiguidade à decisão e da decisão à entrega.',
+        nav_services: 'O que faço',
+        nav_method: 'Como trabalho',
+        nav_experience: 'Experiência',
+        nav_blog: 'Publicações',
+        nav_cta: 'Vamos conversar',
+        nav_menu_open: 'Abrir menu',
+        hero_eyebrow: 'Facilitação estratégica',
+        hero_h1: 'Da ambiguidade à decisão.<br/>Da decisão à <span class="em">entrega</span>.',
+        hero_lead: 'Sou <strong>Bruno Ventorin</strong>. Há 17 anos conduzo times de produto e liderança a transformar problemas confusos em decisões claras e soluções tangíveis — independente da indústria.',
+        hero_cta1: 'Vamos conversar',
+        hero_cta2: 'Como eu trabalho',
+        stat1_l: 'anos desenhando produtos, da estratégia à execução',
+        stat2_l: 'indústrias diferentes, conexões inesperadas',
+        stat3_l: 'inovação sem teatro',
+        srv_eyebrow: 'O que faço',
+        srv_h2: 'Conduzo o time até a decisão. Sem fórmula de prateleira.',
+        srv_p: 'Três formas de trabalhar juntos — escolhidas pelo problema, não pelo catálogo.',
+        c1_h3: 'Design Sprint',
+        c1_p: 'Do enquadramento do problema ao protótipo testado em poucos dias — com uma etapa de framing antes e um caminho de implementação depois, pra não morrer na gaveta.',
+        c1_li1: 'Enquadramento do problema certo',
+        c1_li2: 'Ideação e decisão guiadas',
+        c1_li3: 'Protótipo e teste com usuários',
+        c1_li4: 'Roadmap de implementação',
+        c2_h3: 'Facilitação de descoberta e estratégia',
+        c2_p: 'Alinho stakeholders e transformo discussão dispersa em direção clara de produto — com método, sem reunião que não termina em nada.',
+        c2_li1: 'Alinhamento de stakeholders',
+        c2_li2: 'Descoberta e priorização',
+        c2_li3: 'Visão e estratégia de produto',
+        c2_li4: 'Decisões documentadas',
+        c3_h3: 'Inception e alinhamento de times',
+        c3_p: 'Coloco squads e liderança na mesma página: objetivos, papéis e visão compartilhada. Ideal para times novos ou que precisam de rumo.',
+        c3_li1: 'Objetivos e metas comuns',
+        c3_li2: 'Clareza de papéis',
+        c3_li3: 'Charter e rituais do time',
+        c3_li4: 'Visão compartilhada',
+        mth_eyebrow: 'Como trabalho',
+        mth_h2: 'Sob medida, nunca templado.',
+        mth_p: 'Cada time e cada problema é diferente. O processo se adapta ao seu contexto — não o contrário.',
+        s1_h3: 'Entender',
+        s1_p: 'Mergulho no problema real antes de qualquer dinâmica. Sprint no problema errado é tempo e dinheiro jogados fora.',
+        s2_h3: 'Desenhar',
+        s2_p: 'Abordagem sob medida. Sem fórmula de prateleira.',
+        s3_h3: 'Facilitar',
+        s3_p: 'Conduzo o time à decisão — com método e ritmo, sem teatro.',
+        s4_h3: 'Entregar',
+        s4_p: 'Saída concreta: protótipo testado, roadmap, acompanhamento: um caminho de implementação, não um slide bonito.',
+        exp_eyebrow: 'Experiência',
+        exp_h2: 'A amplitude é o diferencial.',
+        exp_p1: 'Atuei em projetos de produto e facilitação para empresas de setores que quase não se falam — de agro e banco a manufatura, de mídia a utilities.',
+        exp_p2: 'É isso que eu trago pra mesa: o quê funcionou aplicado onde ninguém ainda tentou. Pensamento cross-setor, na prática.',
+        exp_logos_aria: 'Empresas em cujos projetos atuei',
+        dop_h2: 'Estrutura que não engessa. Operação que escala.',
+        dop_p: 'Reestruturação de times e processos de design e produto em três pilares — com integração nativa de ferramentas de IA para automatizar o que pode ser automatizado e liberar capacidade para o que importa de verdade. <span class="accent">Sem hype e com pensamento crítico.</span>',
+        dp1_h3: 'Prática',
+        dp1_p: 'Como a coisa é feita. Eficácia operacional, processos e ferramentas — incluindo automação de workflows com IA onde faz diferença real.',
+        dp1_li1: 'Mapeamento e redesenho de processos',
+        dp1_li2: 'Ferramentas e stack de design',
+        dp1_li3: 'Automação de workflows com IA',
+        dp1_li4: 'Rituais e cadências de equipe',
+        dp2_h3: 'Pessoas',
+        dp2_p: 'Quem faz o quê e como crescem. Cargos, cultura e comunidades que fazem um time de produto funcionar de verdade — em qualquer escala.',
+        dp2_li1: 'Estrutura de cargos e senioridade',
+        dp2_li2: 'Trilhas de crescimento',
+        dp2_li3: 'Cultura de design e produto',
+        dp2_li4: 'Comunidades de prática',
+        dp3_h3: 'Plataforma',
+        dp3_p: 'A infraestrutura que sustenta times que crescem. Métricas, maturidade e escalabilidade operacional — com suporte de IA onde faz sentido.',
+        dp3_li1: 'Métricas e dashboards de operação',
+        dp3_li2: 'Modelo de maturidade de design',
+        dp3_li3: 'Escalabilidade de processos',
+        dp3_li4: 'Integração e suporte com IA',
+        cnt_eyebrow: 'Vamos conversar',
+        cnt_h2: 'Quer destravar soluções e estratégias?',
+        cnt_p: 'Me conta o desafio. A gente vê juntos o melhor método para resolver o seu problema — e como seria na prática.',
+        cnt_cta: 'Mandar uma mensagem',
+        foot_tagline: 'Facilitação estratégica · Campinas, SP',
+      },
+      en: {
+        meta_title: 'Bruno Ventorin · Strategic facilitation',
+        meta_description: 'For 17 years I\'ve been guiding product and leadership teams out of ambiguity and into clear decisions and tested prototypes — in finance, media, industry and utilities.',
+        meta_og_description: 'From ambiguity to decision and from decision to delivery.',
+        nav_services: 'What I do',
+        nav_method: 'How I work',
+        nav_experience: 'Experience',
+        nav_blog: 'Publications',
+        nav_cta: 'Let\'s talk',
+        nav_menu_open: 'Open menu',
+        hero_eyebrow: 'Strategic facilitation',
+        hero_h1: 'From ambiguity to decision.<br/>From decision to <span class="em">delivery</span>.',
+        hero_lead: 'I\'m <strong>Bruno Ventorin</strong>. For 17 years I\'ve been guiding product teams and leadership to turn complex problems into clear decisions and tangible solutions — across industries.',
+        hero_cta1: 'Let\'s talk',
+        hero_cta2: 'How I work',
+        stat1_l: 'years designing products, from strategy to execution',
+        stat2_l: 'different industries, unexpected connections',
+        stat3_l: 'innovation without theatre',
+        srv_eyebrow: 'What I do',
+        srv_h2: 'I guide the team to the decision. No off-the-shelf formula.',
+        srv_p: 'Three ways to work together — chosen by the problem, not the catalog.',
+        c1_h3: 'Design Sprint',
+        c1_p: 'From problem framing to a tested prototype in days — with a framing stage before and an implementation path after, so it doesn\'t die in a drawer.',
+        c1_li1: 'Framing the right problem',
+        c1_li2: 'Guided ideation and decision-making',
+        c1_li3: 'Prototype and user testing',
+        c1_li4: 'Implementation roadmap',
+        c2_h3: 'Discovery & strategy facilitation',
+        c2_p: 'I align stakeholders and turn scattered discussion into a clear product direction — with method, no meetings that end with nothing.',
+        c2_li1: 'Stakeholder alignment',
+        c2_li2: 'Discovery and prioritization',
+        c2_li3: 'Product vision and strategy',
+        c2_li4: 'Documented decisions',
+        c3_h3: 'Inception & team alignment',
+        c3_p: 'I get squads and leadership on the same page: shared objectives, roles and vision. Ideal for new teams or teams that need direction.',
+        c3_li1: 'Common goals and metrics',
+        c3_li2: 'Role clarity',
+        c3_li3: 'Team charter and rituals',
+        c3_li4: 'Shared vision',
+        mth_eyebrow: 'How I work',
+        mth_h2: 'Custom-made, never templated.',
+        mth_p: 'Every team and every problem is different. The process adapts to your context — not the other way around.',
+        s1_h3: 'Understand',
+        s1_p: 'I dive deep into the real problem before any workshop. A sprint on the wrong problem is time and money wasted.',
+        s2_h3: 'Design',
+        s2_p: 'A tailored approach. No off-the-shelf formulas.',
+        s3_h3: 'Facilitate',
+        s3_p: 'I guide the team to the decision — with method and rhythm, no theatre.',
+        s4_h3: 'Deliver',
+        s4_p: 'Concrete output: tested prototype, roadmap, follow-up — an implementation path, not a pretty slide.',
+        exp_eyebrow: 'Experience',
+        exp_h2: 'Breadth is the differentiator.',
+        exp_p1: 'I\'ve worked on product and facilitation projects for companies in sectors that rarely talk to each other — from agri-business and banking to manufacturing, from media to utilities.',
+        exp_p2: 'That\'s what I bring to the table: what worked applied where no one has tried yet. Cross-sector thinking, in practice.',
+        exp_logos_aria: 'Companies I\'ve worked with',
+        dop_h2: 'Structure that doesn\'t constrain. Operations that scale.',
+        dop_p: 'Restructuring design and product teams and processes across three pillars — with native AI tool integration to automate what can be automated and free up capacity for what truly matters. <span class="accent">No hype and with critical thinking.</span>',
+        dp1_h3: 'Practice',
+        dp1_p: 'How things get done. Operational effectiveness, processes and tools — including AI workflow automation where it makes a real difference.',
+        dp1_li1: 'Process mapping and redesign',
+        dp1_li2: 'Design tools and stack',
+        dp1_li3: 'AI workflow automation',
+        dp1_li4: 'Team rituals and cadences',
+        dp2_h3: 'People',
+        dp2_p: 'Who does what and how they grow. Roles, culture and communities that make a product team work — at any scale.',
+        dp2_li1: 'Role and seniority structure',
+        dp2_li2: 'Growth tracks',
+        dp2_li3: 'Design and product culture',
+        dp2_li4: 'Communities of practice',
+        dp3_h3: 'Platform',
+        dp3_p: 'The infrastructure that sustains growing teams. Metrics, maturity and operational scalability — with AI support where it makes sense.',
+        dp3_li1: 'Operations metrics and dashboards',
+        dp3_li2: 'Design maturity model',
+        dp3_li3: 'Process scalability',
+        dp3_li4: 'AI integration and support',
+        cnt_eyebrow: 'Let\'s talk',
+        cnt_h2: 'Want to unlock solutions and strategies?',
+        cnt_p: 'Tell me about the challenge. We\'ll figure out the best method to solve your problem together — and how it would work in practice.',
+        cnt_cta: 'Send a message',
+        foot_tagline: 'Strategic facilitation · Campinas, SP',
+      }
+    };
+
+    function getLang() {
+      return localStorage.getItem('lang') ||
+        (navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en');
+    }
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      document.title = T[lang].meta_title;
+      document.querySelector('meta[name="description"]').content = T[lang].meta_description;
+      document.querySelector('meta[property="og:description"]').content = T[lang].meta_og_description;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = T[lang][el.dataset.i18n];
+        if (v !== undefined) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = T[lang][el.dataset.i18nHtml];
+        if (v !== undefined) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const v = T[lang][el.dataset.i18nAria];
+        if (v !== undefined) el.setAttribute('aria-label', v);
+      });
+      document.querySelectorAll('.lang-switcher button').forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.lang === lang)
+      );
+    }
+    applyLang(getLang());
+  </script>
 
   <script>
     function toggleMenu(btn) {

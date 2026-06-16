@@ -270,3 +270,11 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
   .blog-search input{width:160px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+
+/* ---- language switcher ---- */
+.lang-switcher{display:flex;align-items:center;gap:5px}
+.lang-switcher button{background:none;border:none;cursor:pointer;color:var(--ink-soft);padding:2px 3px;font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.04em;transition:color .2s}
+.lang-switcher button:hover,.lang-switcher button.active{color:var(--ink)}
+.lang-switcher button.active{text-decoration:underline;text-underline-offset:3px}
+.lang-switcher .sep{color:var(--line);font-size:.78rem;pointer-events:none;user-select:none}
+.mobile-nav .lang-switcher{padding:13px 0;border-bottom:1px solid var(--line)}
