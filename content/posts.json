@@ -1,23 +1,15 @@
 {
   "posts": [
     {
-      "id": "facilitacao-estrategica-o-que-e",
-      "type": "article",
-      "title": "Facilitação estratégica: o que é e por que importa",
-      "date": "2026-06-15",
-      "summary": "Facilitação não é sobre fazer reuniões mais dinâmicas. É sobre conduzir um grupo à melhor decisão possível — com método, sem teatro.",
-      "tags": ["facilitação", "estratégia"],
-      "content": "## O que é facilitação estratégica\n\nFacilitação estratégica é o processo de conduzir grupos a tomarem decisões de alta qualidade — mais rápido, com mais alinhamento e com mais clareza do que conseguiriam sozinhos.\n\nNão é sobre fazer reuniões mais \"dinâmicas\". Não é sobre post-its. É sobre estrutura, método e a habilidade de ler o que está acontecendo na sala (ou na call) e intervir no momento certo.\n\n## Por que a maioria das reuniões falha\n\nA maioria dos grupos enfrenta os mesmos problemas:\n\n- As pessoas mais barulhentas dominam a conversa\n- Decisões são tomadas sem dados ou sem clareza\n- O problema errado é resolvido com excelência\n- Saímos da reunião sem saber o que foi decidido\n\nUm facilitador experiente cria as condições para que nenhum desses problemas aconteça.\n\n## O que um bom facilitador faz\n\nUm bom facilitador:\n\n1. **Enquadra o problema certo** antes de qualquer dinâmica\n2. **Garante que todas as vozes sejam ouvidas** — não só as mais altas\n3. **Mantém o grupo no trilho** sem sufocar a criatividade\n4. **Converte ambiguidade em decisão** com estrutura e tempo definidos\n5. **Documenta** o que foi decidido, por quem e por quê\n\n## Quando faz sentido contratar um facilitador externo\n\nQuando o problema é politicamente sensível, quando há conflito entre stakeholders, quando o grupo está preso há meses na mesma discussão, ou quando o resultado é importante demais para depender de quem for \"dono\" da reunião.",
-      "youtube_id": null,
-      "published": true
-    },
-    {
       "id": "design-sprint-na-pratica",
       "type": "video",
       "title": "Design Sprint na prática: do problema ao protótipo em dias",
       "date": "2026-05-20",
       "summary": "Uma visão geral de como conduzir um Design Sprint do enquadramento do problema ao protótipo testado com usuários reais — sem cortar caminho nas etapas que importam.",
-      "tags": ["design sprint", "produto"],
+      "tags": [
+        "design sprint",
+        "produto"
+      ],
       "content": "Neste vídeo, explico como funciona um Design Sprint na prática — do enquadramento do problema ao protótipo testado com usuários reais.\n\nCubro as principais armadilhas do processo e o que separa um sprint que gera resultado de um que vira teatro de inovação.",
       "youtube_id": "dQw4w9WgXcQ",
       "published": true
