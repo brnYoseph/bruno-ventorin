@@ -25,7 +25,9 @@ body{
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  display:flex;flex-direction:column;min-height:100vh;
 }
+main{flex:1}
 
 /* subtle grain */
 body::before{
