@@ -65,7 +65,20 @@ nav.main .btn-primary{color:var(--paper)}
 .btn-ghost:hover{background:var(--ink);color:var(--paper)}
 .btn .arrow{transition:transform .25s}
 .btn:hover .arrow{transform:translateX(4px)}
-.menu-btn{display:none;background:none;border:none;color:var(--ink);cursor:pointer}
+.menu-btn{display:none;background:none;border:none;color:var(--ink);cursor:pointer;padding:4px}
+.mobile-nav{
+  display:none;flex-direction:column;
+  padding:12px 28px 20px;gap:2px;
+  background:rgba(244,240,231,.96);backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);
+}
+header.menu-open .mobile-nav{display:flex}
+.mobile-nav a:not(.btn){
+  font-size:1.05rem;font-weight:500;color:var(--ink-soft);
+  padding:13px 0;border-bottom:1px solid var(--line);transition:color .2s;
+}
+.mobile-nav a:not(.btn):hover{color:var(--ink)}
+.mobile-nav .btn{margin-top:12px;justify-content:center}
 
 /* ---- hero ---- */
 .hero{position:relative;padding:118px 0 96px;overflow:hidden}

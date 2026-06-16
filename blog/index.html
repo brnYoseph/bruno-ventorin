@@ -25,10 +25,18 @@
         <a href="/blog/" aria-current="page">Publicações</a>
         <a href="/#contato" class="btn btn-primary">Vamos conversar</a>
       </nav>
-      <button class="menu-btn" aria-label="Menu" onclick="location.href='/#contato'">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+      <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
+        <svg class="ico-menu" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+        <svg class="ico-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
       </button>
     </div>
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/#servicos"    onclick="closeMenu()">O que faço</a>
+      <a href="/#metodo"      onclick="closeMenu()">Como trabalho</a>
+      <a href="/#experiencia" onclick="closeMenu()">Experiência</a>
+      <a href="/blog/"        onclick="closeMenu()">Publicações</a>
+      <a href="/#contato"     onclick="closeMenu()" class="btn btn-primary">Vamos conversar</a>
+    </nav>
   </header>
 
   <main>
@@ -71,6 +79,23 @@
   </footer>
 
   <script>
+    function toggleMenu(btn) {
+      const hdr = document.getElementById('hdr');
+      const open = hdr.classList.toggle('menu-open');
+      btn.setAttribute('aria-expanded', open);
+      btn.querySelector('.ico-menu').style.display = open ? 'none' : '';
+      btn.querySelector('.ico-close').style.display = open ? '' : 'none';
+      document.getElementById('mobileNav').setAttribute('aria-hidden', !open);
+    }
+    function closeMenu() {
+      const hdr = document.getElementById('hdr');
+      hdr.classList.remove('menu-open');
+      const btn = document.querySelector('.menu-btn');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.querySelector('.ico-menu').style.display = '';
+      btn.querySelector('.ico-close').style.display = 'none';
+      document.getElementById('mobileNav').setAttribute('aria-hidden', 'true');
+    }
     // header scroll
     const hdr = document.getElementById('hdr');
     addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10));
