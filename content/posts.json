@@ -1,18 +1,3 @@
 {
-  "posts": [
-    {
-      "id": "design-sprint-na-pratica",
-      "type": "video",
-      "title": "Design Sprint na prática: do problema ao protótipo em dias",
-      "date": "2026-05-20",
-      "summary": "Uma visão geral de como conduzir um Design Sprint do enquadramento do problema ao protótipo testado com usuários reais — sem cortar caminho nas etapas que importam.",
-      "tags": [
-        "design sprint",
-        "produto"
-      ],
-      "content": "Neste vídeo, explico como funciona um Design Sprint na prática — do enquadramento do problema ao protótipo testado com usuários reais.\n\nCubro as principais armadilhas do processo e o que separa um sprint que gera resultado de um que vira teatro de inovação.",
-      "youtube_id": "dQw4w9WgXcQ",
-      "published": true
-    }
-  ]
+  "posts": []
 }
