@@ -274,8 +274,10 @@ function removeDraft(key) {
 
 // ---- status published/rascunho (automático — refletido pelas ações de Publicar / Reverter à rascunho) ----
 function updateToggle() {
+  const wrap = document.getElementById('publishedToggle');
   const sw = document.getElementById('toggleSwitch');
   const lb = document.getElementById('toggleLabel');
+  wrap.classList.toggle('on', state.published);
   sw.classList.toggle('on', state.published);
   lb.textContent = state.published ? 'Publicado' : 'Rascunho';
 }

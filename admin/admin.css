@@ -218,20 +218,18 @@ body{
 .meta-field textarea{resize:none;height:56px;line-height:1.5}
 
 .editor-toggle{
-  display:flex;align-items:center;gap:8px;
+  display:flex;align-items:center;gap:7px;
   font-size:.82rem;font-weight:600;color:var(--text-soft);
   user-select:none;align-self:center;
+  transition:color .2s;
 }
-.toggle-switch{
-  width:34px;height:19px;border-radius:10px;background:var(--border);
-  position:relative;transition:.2s;flex-shrink:0;
+.editor-toggle.on{color:var(--accent)}
+.status-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#B0AAA1;
+  flex-shrink:0;transition:background-color .2s;
 }
-.toggle-switch.on{background:var(--accent)}
-.toggle-switch::after{
-  content:"";position:absolute;top:3px;left:3px;
-  width:13px;height:13px;border-radius:50%;background:#fff;transition:.2s;
-}
-.toggle-switch.on::after{left:18px}
+.status-dot.on{background:var(--accent)}
 
 .editor-split{
   flex:1;display:grid;grid-template-columns:1fr 1fr;
