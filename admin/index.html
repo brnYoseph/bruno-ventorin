@@ -112,7 +112,7 @@
               <input type="text" id="fieldYtId" placeholder="ID do vídeo no YouTube" spellcheck="false" />
             </div>
 
-            <div class="editor-toggle" id="publishedToggle">
+            <div class="editor-toggle" id="publishedToggle" title="Status definido automaticamente pelas ações de Publicar / Reverter à rascunho">
               <div class="toggle-switch" id="toggleSwitch"></div>
               <span id="toggleLabel">Rascunho</span>
             </div>
@@ -120,7 +120,10 @@
 
           <div class="editor-split">
             <div class="editor-pane">
-              <div class="editor-pane-head">Markdown</div>
+              <div class="editor-pane-head">
+                Markdown
+                <button id="btnMarkdownHelp" class="md-help-btn" type="button" title="Ajuda de formatação Markdown" aria-label="Ajuda de formatação Markdown">?</button>
+              </div>
               <textarea id="fieldContent" placeholder="## Título&#10;&#10;Escreva em Markdown…" spellcheck="true"></textarea>
             </div>
             <div class="editor-pane">
@@ -134,6 +137,42 @@
   </div>
 
   <div id="toast" class="toast"></div>
+
+  <!-- CONFIRM MODAL (ações destrutivas) -->
+  <div id="confirmModal" class="modal-overlay" style="display:none">
+    <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="confirmModalTitle" aria-describedby="confirmModalMsg">
+      <h3 id="confirmModalTitle" class="modal-title"></h3>
+      <p id="confirmModalMsg" class="modal-message"></p>
+      <div class="modal-actions">
+        <button id="confirmModalCancel" class="topbar-btn">Cancelar</button>
+        <button id="confirmModalConfirm" class="topbar-btn danger"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKDOWN HELP MODAL -->
+  <div id="markdownHelpModal" class="modal-overlay" style="display:none">
+    <div class="modal-card modal-card-wide" role="dialog" aria-modal="true" aria-labelledby="markdownHelpTitle">
+      <h3 id="markdownHelpTitle" class="modal-title">Guia de formatação Markdown</h3>
+      <div class="markdown-help-list">
+        <div class="md-help-row"><code># Título</code><span>Título nível 1</span></div>
+        <div class="md-help-row"><code>## Título</code><span>Título nível 2</span></div>
+        <div class="md-help-row"><code>### Título</code><span>Título nível 3</span></div>
+        <div class="md-help-row"><code>**texto**</code><span>Negrito</span></div>
+        <div class="md-help-row"><code>*texto*</code><span>Itálico</span></div>
+        <div class="md-help-row"><code>[texto](url)</code><span>Link</span></div>
+        <div class="md-help-row"><code>![alt](url)</code><span>Imagem</span></div>
+        <div class="md-help-row"><code>- item</code><span>Lista não ordenada</span></div>
+        <div class="md-help-row"><code>1. item</code><span>Lista ordenada</span></div>
+        <div class="md-help-row"><code>&gt; texto</code><span>Citação</span></div>
+        <div class="md-help-row"><code>`código`</code><span>Código inline</span></div>
+        <div class="md-help-row"><code>```<br>código<br>```</code><span>Bloco de código</span></div>
+      </div>
+      <div class="modal-actions">
+        <button id="markdownHelpClose" class="topbar-btn">Fechar</button>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="config.js"></script>

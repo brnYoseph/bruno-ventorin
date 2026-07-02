@@ -4,10 +4,11 @@
               marked.js (CDN)
    ============================================================ */
 
-const SESSION_KEY   = 'bv_cms_session';
-const PAT_KEY       = 'bv_cms_pat';
-const DRAFT_KEY     = 'bv_cms_drafts';
-const SESSION_TTL   = 8 * 60 * 60 * 1000; // 8h
+const SESSION_KEY    = 'bv_cms_session';
+const PAT_KEY        = 'bv_cms_pat';
+const DRAFT_KEY      = 'bv_cms_drafts';
+const SESSION_TTL     = 8 * 60 * 60 * 1000; // 8h
+const AUTOSAVE_DELAY  = 1500; // ms de inatividade antes de autosalvar
 
 const API = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${POSTS_PATH}`;
 
@@ -17,7 +18,11 @@ let state = {
   fileSha: null,
   currentId: null,
   published: true,
+  tempId: null,    // id estável do rascunho enquanto o post ainda não foi publicado
+  createdAt: null, // data de criação usada no título padrão do autosave
 };
+
+let autoSaveTimer = null;
 
 // ---- helpers ----
 function toBase64(str) {
@@ -44,6 +49,17 @@ function generateSlug(title) {
 
 function formatDate(iso) {
   return new Date(iso + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+function pad2(n) { return String(n).padStart(2, '0'); }
+
+function formatAutoTitle(date) {
+  const d  = pad2(date.getDate());
+  const m  = pad2(date.getMonth() + 1);
+  const y  = pad2(date.getFullYear() % 100);
+  const hh = pad2(date.getHours());
+  const mm = pad2(date.getMinutes());
+  return `Sem Título - ${d}/${m}/${y} ${hh}:${mm}`;
 }
 
 function getPat() { return sessionStorage.getItem(PAT_KEY); }
@@ -75,9 +91,36 @@ function createSession() {
 }
 
 function logout() {
+  clearTimeout(autoSaveTimer);
   sessionStorage.removeItem(SESSION_KEY);
   sessionStorage.removeItem(PAT_KEY);
   showScreen('login');
+}
+
+// ---- confirm modal (ações destrutivas) ----
+let confirmResolve = null;
+let confirmPrevFocus = null;
+
+function openConfirmModal({ title, message, confirmLabel = 'Confirmar' }) {
+  return new Promise(resolve => {
+    confirmResolve = resolve;
+    confirmPrevFocus = document.activeElement;
+    document.getElementById('confirmModalTitle').textContent = title;
+    document.getElementById('confirmModalMsg').textContent = message;
+    document.getElementById('confirmModalConfirm').textContent = confirmLabel;
+    document.getElementById('confirmModal').style.display = 'flex';
+    // foco vai para o botão seguro (cancelar), evitando confirmação acidental por Enter
+    document.getElementById('confirmModalCancel').focus();
+  });
+}
+
+function closeConfirmModal(result) {
+  document.getElementById('confirmModal').style.display = 'none';
+  const resolve = confirmResolve;
+  confirmResolve = null;
+  if (confirmPrevFocus) confirmPrevFocus.focus();
+  confirmPrevFocus = null;
+  if (resolve) resolve(result);
 }
 
 // ---- screens ----
@@ -144,6 +187,7 @@ function renderSidebar() {
 
 // ---- editor ----
 function selectPost(id) {
+  clearTimeout(autoSaveTimer);
   state.currentId = id;
   const post = state.posts.find(p => p.id === id);
   if (!post) return;
@@ -173,6 +217,7 @@ function populateForm(post) {
   document.getElementById('fieldYtId').value    = post.youtube_id || '';
   state.published = post.published !== false;
   updateToggle();
+  updateDraftButtonLabel();
   toggleYtField();
   updatePreview();
   setStatus('');
@@ -199,7 +244,10 @@ function today() {
 }
 
 function newPost() {
+  clearTimeout(autoSaveTimer);
   state.currentId = null;
+  state.tempId = 'draft-' + Date.now();
+  state.createdAt = new Date();
   const blank = {
     id: '', type: 'article', title: '', date: today(),
     summary: '', tags: [], content: '', youtube_id: null, published: false,
@@ -210,12 +258,33 @@ function newPost() {
   document.getElementById('fieldTitle').focus();
 }
 
-// ---- toggle published ----
+// ---- draft storage key (estável durante a edição, mesmo com título mudando) ----
+function getDraftKey() {
+  return state.currentId || state.tempId;
+}
+
+function removeDraft(key) {
+  if (!key) return;
+  const drafts = getDrafts();
+  if (key in drafts) {
+    delete drafts[key];
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(drafts));
+  }
+}
+
+// ---- status published/rascunho (automático — refletido pelas ações de Publicar / Reverter à rascunho) ----
 function updateToggle() {
   const sw = document.getElementById('toggleSwitch');
   const lb = document.getElementById('toggleLabel');
   sw.classList.toggle('on', state.published);
   lb.textContent = state.published ? 'Publicado' : 'Rascunho';
+}
+
+// botão "Salvar rascunho" vira "Reverter à rascunho" quando o post exibido já está publicado
+function updateDraftButtonLabel() {
+  const btn = document.getElementById('btnDraft');
+  const isLivePublished = !!state.currentId && state.published;
+  btn.textContent = isLivePublished ? 'Reverter à rascunho' : 'Salvar rascunho';
 }
 
 // ---- youtube field visibility ----
@@ -239,24 +308,56 @@ function setStatus(msg) {
 }
 
 // ---- save draft (localStorage) ----
-function saveDraft() {
+function applyAutoTitleIfEmpty() {
+  const titleInput = document.getElementById('fieldTitle');
+  if (!state.currentId && !titleInput.value.trim() && document.activeElement !== titleInput) {
+    titleInput.value = formatAutoTitle(state.createdAt || new Date());
+  }
+}
+
+function saveDraft(silent = false) {
+  applyAutoTitleIfEmpty();
   const post = getFormData();
   const drafts = getDrafts();
-  drafts[post.id || '_new'] = post;
+  drafts[getDraftKey()] = { ...post, savedAt: Date.now() };
   localStorage.setItem(DRAFT_KEY, JSON.stringify(drafts));
-  showToast('Rascunho salvo localmente.', 'success');
-  setStatus('Rascunho salvo');
+  if (silent) {
+    setStatus('Salvo automaticamente às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }));
+  } else {
+    showToast('Rascunho salvo localmente.', 'success');
+    setStatus('Rascunho salvo');
+  }
 }
 
 function getDrafts() {
   try { return JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}'); } catch { return {}; }
 }
 
+// ---- autosave (apenas na tela de nova publicação, ainda não publicada) ----
+function scheduleAutoSave() {
+  if (state.currentId) return;
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(() => saveDraft(true), AUTOSAVE_DELAY);
+}
+
 // ---- publish to GitHub ----
 async function publishPost() {
+  const wasNew = !state.currentId;
+  const tempKey = state.tempId;
+  const prevPublished = state.published;
+  state.published = true; // publicar sempre marca o artigo como publicado, automaticamente
+
   const post = getFormData();
-  if (!post.title) { showToast('O título é obrigatório.', 'error'); return; }
-  if (!getPat()) { showToast('PAT do GitHub não encontrado. Faça login novamente.', 'error'); return; }
+  if (!post.title) {
+    state.published = prevPublished;
+    showToast('O título é obrigatório.', 'error');
+    return;
+  }
+  if (!getPat()) {
+    state.published = prevPublished;
+    showToast('PAT do GitHub não encontrado. Faça login novamente.', 'error');
+    return;
+  }
 
   setStatus('Publicando…');
   document.getElementById('btnPublish').disabled = true;
@@ -270,12 +371,18 @@ async function publishPost() {
       state.posts.push(post);
     }
 
-    await savePostsToGitHub(`post: ${post.published ? 'publish' : 'draft'} "${post.title}"`);
+    await savePostsToGitHub(`post: publish "${post.title}"`);
+    if (wasNew) removeDraft(tempKey);
+    updateToggle();
+    updateDraftButtonLabel();
     renderSidebar();
     showToast('Publicado com sucesso! O site atualiza em ~60s.', 'success');
     setStatus('Publicado');
   } catch (err) {
     state.posts = state.posts.filter(p => p.id !== (state.currentId || post.id));
+    state.published = prevPublished;
+    updateToggle();
+    updateDraftButtonLabel();
     showToast('Erro ao publicar: ' + err.message, 'error');
     setStatus('Erro');
   } finally {
@@ -283,17 +390,72 @@ async function publishPost() {
   }
 }
 
+// ---- revert a published post back to draft (retira do blog) ----
+async function revertToDraft() {
+  const idx = state.posts.findIndex(p => p.id === state.currentId);
+  if (idx < 0) return;
+  const post = state.posts[idx];
+
+  const ok = await openConfirmModal({
+    title: 'Reverter à rascunho?',
+    message: `"${post.title}" será retirado do blog publicado e voltará a ser um rascunho. Você pode publicá-lo novamente quando quiser.`,
+    confirmLabel: 'Reverter à rascunho',
+  });
+  if (!ok) return;
+  if (!getPat()) { showToast('PAT não encontrado.', 'error'); return; }
+
+  setStatus('Revertendo…');
+  document.getElementById('btnDraft').disabled = true;
+  try {
+    state.posts[idx] = { ...post, published: false };
+    await savePostsToGitHub(`post: revert to draft "${post.title}"`);
+    state.published = false;
+    updateToggle();
+    updateDraftButtonLabel();
+    renderSidebar();
+    showToast('Publicação revertida para rascunho e retirada do blog.', 'success');
+    setStatus('');
+  } catch (err) {
+    state.posts[idx] = post;
+    showToast('Erro ao reverter: ' + err.message, 'error');
+    setStatus('Erro');
+  } finally {
+    document.getElementById('btnDraft').disabled = false;
+  }
+}
+
 // ---- delete post ----
 async function deletePost() {
-  if (!state.currentId) return;
+  clearTimeout(autoSaveTimer);
+
+  // tela de nova publicação: não há post salvo no GitHub ainda (rascunho local ou texto não salvo)
+  if (!state.currentId) {
+    const ok = await openConfirmModal({
+      title: 'Descartar rascunho?',
+      message: 'Esta publicação ainda não foi salva no GitHub. Ao continuar, todo o conteúdo digitado e o autosave local serão apagados permanentemente.',
+      confirmLabel: 'Descartar rascunho',
+    });
+    if (!ok) return;
+    removeDraft(getDraftKey());
+    newPost();
+    showToast('Rascunho descartado.', 'success');
+    return;
+  }
+
   const post = state.posts.find(p => p.id === state.currentId);
   if (!post) return;
-  if (!confirm(`Excluir "${post.title}"? Esta ação não pode ser desfeita.`)) return;
+  const ok = await openConfirmModal({
+    title: 'Excluir publicação?',
+    message: `"${post.title}" será removida permanentemente do repositório. Esta ação não pode ser desfeita.`,
+    confirmLabel: 'Excluir publicação',
+  });
+  if (!ok) return;
   if (!getPat()) { showToast('PAT não encontrado.', 'error'); return; }
 
   setStatus('Excluindo…');
   try {
     state.posts = state.posts.filter(p => p.id !== state.currentId);
+    removeDraft(getDraftKey());
     await savePostsToGitHub(`post: delete "${post.title}"`);
     hideEditor();
     renderSidebar();
@@ -383,7 +545,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnNewPost').addEventListener('click', newPost);
   document.getElementById('btnLogout').addEventListener('click', logout);
   document.getElementById('btnPublish').addEventListener('click', publishPost);
-  document.getElementById('btnDraft').addEventListener('click', saveDraft);
+  document.getElementById('btnDraft').addEventListener('click', () => {
+    // automático: se o post exibido já está publicado, este botão reverte à rascunho
+    if (state.currentId && state.published) {
+      revertToDraft();
+    } else {
+      saveDraft(false);
+    }
+  });
   document.getElementById('btnDelete').addEventListener('click', deletePost);
 
   // type change → show/hide youtube field
@@ -392,10 +561,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // live preview
   document.getElementById('fieldContent').addEventListener('input', updatePreview);
 
-  // published toggle
-  document.getElementById('toggleSwitch').addEventListener('click', () => {
-    state.published = !state.published;
-    updateToggle();
+  // markdown help modal
+  document.getElementById('btnMarkdownHelp').addEventListener('click', () => {
+    document.getElementById('markdownHelpModal').style.display = 'flex';
+  });
+  document.getElementById('markdownHelpClose').addEventListener('click', () => {
+    document.getElementById('markdownHelpModal').style.display = 'none';
+  });
+  document.getElementById('markdownHelpModal').addEventListener('mousedown', e => {
+    if (e.target.id === 'markdownHelpModal') document.getElementById('markdownHelpModal').style.display = 'none';
+  });
+
+  // status publicado/rascunho: automático (definido por Publicar / Reverter à rascunho), não é mais clicável
+
+  // autosave: qualquer alteração no formulário agenda um autosave (tela de nova publicação)
+  ['fieldTitle', 'fieldType', 'fieldDate', 'fieldTags', 'fieldSummary', 'fieldContent', 'fieldYtId']
+    .forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', scheduleAutoSave);
+      el.addEventListener('change', scheduleAutoSave);
+    });
+
+  // confirm modal
+  document.getElementById('confirmModalCancel').addEventListener('click', () => closeConfirmModal(false));
+  document.getElementById('confirmModalConfirm').addEventListener('click', () => closeConfirmModal(true));
+  document.getElementById('confirmModal').addEventListener('mousedown', e => {
+    if (e.target.id === 'confirmModal') closeConfirmModal(false);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('confirmModal').style.display === 'flex') closeConfirmModal(false);
+    if (document.getElementById('markdownHelpModal').style.display === 'flex') {
+      document.getElementById('markdownHelpModal').style.display = 'none';
+    }
   });
 
   init();
