@@ -67,6 +67,10 @@
     </div>
   </main>
 
+  <div class="img-lightbox" id="imgLightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <img id="imgLightboxImg" src="" alt="" />
+  </div>
+
   <footer>
     <div class="container foot">
       <span class="wordmark">Bruno Ventorin<span>.</span></span>
@@ -220,6 +224,7 @@
         renderHeader(post) +
         `<div class="post-content reveal">${html}</div>`;
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      initImageZoom();
     }
 
     function renderVideo(post) {
@@ -239,6 +244,31 @@
 
       document.getElementById('postContent').innerHTML = renderHeader(post) + embed + desc;
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      initImageZoom();
+    }
+
+    function initImageZoom() {
+      const lightbox = document.getElementById('imgLightbox');
+      const lightboxImg = document.getElementById('imgLightboxImg');
+
+      function openZoom(img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeZoom() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.post-content img').forEach(img => {
+        img.addEventListener('click', () => openZoom(img));
+      });
+      lightbox.addEventListener('click', closeZoom);
+      addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
     }
 
     function renderError(msg) {
