@@ -12,6 +12,10 @@ const AUTOSAVE_DELAY  = 1500; // ms de inatividade antes de autosalvar
 
 const API = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${POSTS_PATH}`;
 
+const SITEMAP_PATH = 'sitemap.xml';
+const SITEMAP_API  = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${SITEMAP_PATH}`;
+const SITE_URL     = 'https://brunoventorin.com.br';
+
 // ---- state ----
 let state = {
   posts: [],
@@ -131,9 +135,9 @@ function showScreen(screen) {
 }
 
 // ---- GitHub API ----
-async function ghFetch(method, body) {
+async function ghFetch(method, body, api = API) {
   const pat = getPat();
-  const res = await fetch(API, {
+  const res = await fetch(api, {
     method,
     headers: {
       Authorization: `Bearer ${pat}`,
@@ -164,6 +168,62 @@ async function savePostsToGitHub(commitMsg) {
     sha: state.fileSha,
   });
   state.fileSha = res.content.sha;
+}
+
+// ---- sitemap (mantido em sincronia com as publicações) ----
+const SITEMAP_STATIC_URLS = [
+  { loc: `${SITE_URL}/`,           changefreq: 'monthly', priority: '1.0' },
+  { loc: `${SITE_URL}/blog/`,      changefreq: 'weekly',  priority: '0.8' },
+];
+
+function xmlEscape(str) {
+  return String(str)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+}
+
+function buildSitemap(posts) {
+  const urls = [
+    ...SITEMAP_STATIC_URLS,
+    ...posts.filter(p => p.published).map(p => ({
+      loc: `${SITE_URL}/blog/post.html?id=${encodeURIComponent(p.id)}`,
+      lastmod: p.date,
+      changefreq: 'monthly',
+      priority: '0.6',
+    })),
+  ];
+
+  const entries = urls.map(u => {
+    const lines = [`    <loc>${xmlEscape(u.loc)}</loc>`];
+    if (u.lastmod)    lines.push(`    <lastmod>${xmlEscape(u.lastmod)}</lastmod>`);
+    if (u.changefreq) lines.push(`    <changefreq>${u.changefreq}</changefreq>`);
+    if (u.priority)   lines.push(`    <priority>${u.priority}</priority>`);
+    return `  <url>\n${lines.join('\n')}\n  </url>`;
+  });
+
+  return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<!-- Mantido automaticamente pelo CMS (admin/) ao publicar, reverter ou excluir publicações. -->\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    entries.join('\n') + '\n</urlset>\n';
+}
+
+async function syncSitemap(commitMsg) {
+  try {
+    let sha;
+    try {
+      sha = (await ghFetch('GET', undefined, SITEMAP_API)).sha;
+    } catch {
+      sha = undefined; // sitemap.xml ainda não existe no repositório
+    }
+    await ghFetch('PUT', {
+      message: commitMsg,
+      content: toBase64(buildSitemap(state.posts)),
+      ...(sha ? { sha } : {}),
+    }, SITEMAP_API);
+  } catch (err) {
+    // O sitemap é secundário: uma falha aqui não deve impedir a publicação do post.
+    console.warn('Não foi possível atualizar o sitemap.xml:', err);
+  }
 }
 
 // ---- sidebar ----
@@ -374,6 +434,7 @@ async function publishPost() {
     }
 
     await savePostsToGitHub(`post: publish "${post.title}"`);
+    await syncSitemap('chore: update sitemap');
     if (wasNew) removeDraft(tempKey);
     updateToggle();
     updateDraftButtonLabel();
@@ -411,6 +472,7 @@ async function revertToDraft() {
   try {
     state.posts[idx] = { ...post, published: false };
     await savePostsToGitHub(`post: revert to draft "${post.title}"`);
+    await syncSitemap('chore: update sitemap');
     state.published = false;
     updateToggle();
     updateDraftButtonLabel();
@@ -459,6 +521,7 @@ async function deletePost() {
     state.posts = state.posts.filter(p => p.id !== state.currentId);
     removeDraft(getDraftKey());
     await savePostsToGitHub(`post: delete "${post.title}"`);
+    await syncSitemap('chore: update sitemap');
     hideEditor();
     renderSidebar();
     showToast('Post excluído.', 'success');

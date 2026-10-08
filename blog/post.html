@@ -4,7 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publicação · Bruno Ventorin</title>
-  <meta name="description" content="" />
+  <meta name="description" content="Artigos e vídeos sobre facilitação estratégica, design sprint e estratégia de produto." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:site_name" content="Bruno Ventorin" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Publicação · Bruno Ventorin" />
+  <meta property="og:description" content="Artigos e vídeos sobre facilitação estratégica, design sprint e estratégia de produto." />
+  <meta property="og:url" content="https://brunoventorin.com.br/blog/" />
+  <meta property="og:image" content="https://brunoventorin.com.br/public/images/profile.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Publicação · Bruno Ventorin" />
+  <meta name="twitter:description" content="Artigos e vídeos sobre facilitação estratégica, design sprint e estratégia de produto." />
+  <meta name="twitter:image" content="https://brunoventorin.com.br/public/images/profile.jpg" />
   <link rel="icon" type="image/svg+xml" href="../public/images/favicon/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../public/images/favicon/favicon-32x32.png">
   <link rel="shortcut icon" href="../public/images/favicon/favicon.ico">
@@ -179,6 +191,89 @@
     }), { threshold: 0 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+    const SITE_URL = 'https://brunoventorin.com.br';
+    const BLOG_URL = SITE_URL + '/blog/';
+    const DEFAULT_OG_IMAGE = SITE_URL + '/public/images/profile.jpg';
+
+    function toAbsoluteUrl(src) {
+      if (/^https?:\/\//i.test(src)) {
+        // o conteúdo do blog usa www.brunoventorin.com.br; o canônico é o apex
+        return src.replace(/^https?:\/\/www\.brunoventorin\.com\.br/i, SITE_URL);
+      }
+      try { return new URL(src, BLOG_URL).href; } catch { return DEFAULT_OG_IMAGE; }
+    }
+
+    function setMetaContent(selector, content) {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute('content', content);
+    }
+
+    function setCanonical(url) {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'canonical';
+        document.head.appendChild(link);
+      }
+      link.href = url;
+    }
+
+    function postImage(post) {
+      if (post.type === 'video' && post.youtube_id) {
+        return `https://img.youtube.com/vi/${encodeURIComponent(post.youtube_id)}/maxresdefault.jpg`;
+      }
+      const first = String(post.content || '').match(/!\[[^\]]*\]\(\s*([^)\s]+)/);
+      return first ? toAbsoluteUrl(first[1]) : DEFAULT_OG_IMAGE;
+    }
+
+    function injectPostJsonLd(post, url, image) {
+      const isVideo = post.type === 'video' && post.youtube_id;
+      const data = {
+        '@context': 'https://schema.org',
+        '@type': isVideo ? 'VideoObject' : 'BlogPosting',
+        headline: post.title,
+        description: post.summary || '',
+        image: [image],
+        datePublished: post.date,
+        dateModified: post.date,
+        inLanguage: 'pt-BR',
+        keywords: (post.tags || []).join(', '),
+        author: { '@type': 'Person', name: 'Bruno Ventorin', url: SITE_URL + '/' },
+        publisher: { '@type': 'Person', name: 'Bruno Ventorin', url: SITE_URL + '/' },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      };
+      if (isVideo) data.embedUrl = `https://www.youtube-nocookie.com/embed/${post.youtube_id}`;
+
+      let el = document.getElementById('postJsonLd');
+      if (!el) {
+        el = document.createElement('script');
+        el.type = 'application/ld+json';
+        el.id = 'postJsonLd';
+        document.head.appendChild(el);
+      }
+      el.textContent = JSON.stringify(data);
+    }
+
+    function applyPostSeo(post) {
+      const url = `${BLOG_URL}post.html?id=${encodeURIComponent(post.id)}`;
+      const image = postImage(post);
+      const title = `${post.title} · Bruno Ventorin`;
+      const description = post.summary || '';
+
+      document.title = title;
+      setCanonical(url);
+      setMetaContent('meta[name="description"]', description);
+      setMetaContent('meta[property="og:title"]', title);
+      setMetaContent('meta[property="og:description"]', description);
+      setMetaContent('meta[property="og:url"]', url);
+      setMetaContent('meta[property="og:type"]', post.type === 'video' ? 'video.other' : 'article');
+      setMetaContent('meta[property="og:image"]', image);
+      setMetaContent('meta[name="twitter:title"]', title);
+      setMetaContent('meta[name="twitter:description"]', description);
+      setMetaContent('meta[name="twitter:image"]', image);
+      injectPostJsonLd(post, url, image);
+    }
+
     function escHtml(str) {
       return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
@@ -196,8 +291,7 @@
         const post = (data.posts || []).find(p => p.id === id && p.published);
         if (!post) { renderError(T[lang].err_not_found); return; }
 
-        document.title = post.title + ' · Bruno Ventorin';
-        document.querySelector('meta[name="description"]').content = post.summary;
+        applyPostSeo(post);
 
         post.type === 'video' ? renderVideo(post) : renderArticle(post);
       } catch {
@@ -272,6 +366,7 @@
     }
 
     function renderError(msg) {
+      setMetaContent('meta[name="robots"]', 'noindex, follow');
       document.getElementById('postContent').innerHTML =
         `<p style="color:var(--ink-soft);padding:48px 0">${escHtml(msg)}</p>`;
     }
