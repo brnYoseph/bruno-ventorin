@@ -174,6 +174,7 @@ async function savePostsToGitHub(commitMsg) {
 const SITEMAP_STATIC_URLS = [
   { loc: `${SITE_URL}/`,           changefreq: 'monthly', priority: '1.0' },
   { loc: `${SITE_URL}/blog/`,      changefreq: 'weekly',  priority: '0.8' },
+  { loc: `${SITE_URL}/designops/`, changefreq: 'monthly', priority: '0.8' },
 ];
 
 function xmlEscape(str) {

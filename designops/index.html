@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DesignOps &amp; ProductOps · Bruno Ventorin</title>
+  <meta name="description" content="Consultoria em DesignOps e ProductOps: leitura da operação de design e produto como um todo, níveis de maturidade e estrutura para times de consultoria e inovação." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://brunoventorin.com.br/designops/" />
+  <meta property="og:site_name" content="Bruno Ventorin" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DesignOps &amp; ProductOps · Bruno Ventorin" />
+  <meta property="og:description" content="Consultoria em DesignOps e ProductOps: leitura da operação de design e produto como um todo, níveis de maturidade e estrutura para times de consultoria e inovação." />
+  <meta property="og:url" content="https://brunoventorin.com.br/designops/" />
+  <meta property="og:image" content="https://brunoventorin.com.br/public/images/profile.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DesignOps &amp; ProductOps · Bruno Ventorin" />
+  <meta name="twitter:description" content="Consultoria em DesignOps e ProductOps: leitura da operação de design e produto como um todo, níveis de maturidade e estrutura para times de consultoria e inovação." />
+  <meta name="twitter:image" content="https://brunoventorin.com.br/public/images/profile.jpg" />
+  <link rel="icon" type="image/svg+xml" href="../public/images/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../public/images/favicon/favicon-32x32.png">
+  <link rel="shortcut icon" href="../public/images/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0Q18JSD34"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y0Q18JSD34');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Consultoria em DesignOps & ProductOps",
+    "description": "Leitura da operação de design e produto como um todo, níveis de maturidade e estrutura de processos, papéis e ferramentas para times de consultoria e inovação.",
+    "serviceType": "DesignOps",
+    "url": "https://brunoventorin.com.br/designops/",
+    "provider": { "@type": "Person", "name": "Bruno Ventorin", "url": "https://brunoventorin.com.br/" },
+    "areaServed": { "@type": "Country", "name": "Brasil" }
+  }
+  </script>
+</head>
+<body>
+
+  <header id="hdr">
+    <div class="container hdr">
+      <a href="/" class="wordmark">Bruno Ventorin<span>.</span></a>
+      <nav class="main">
+        <a href="/#servicos" data-i18n="nav_services">O que faço</a>
+        <a href="/#metodo" data-i18n="nav_method">Como trabalho</a>
+        <a href="/#experiencia" data-i18n="nav_experience">Experiência</a>
+        <a href="/designops/" aria-current="page" data-i18n="nav_designops">DesignOps</a>
+        <a href="/blog/" data-i18n="nav_blog">Publicações</a>
+        <div class="lang-switcher">
+          <button data-lang="pt" onclick="setLang('pt')">PT</button>
+          <span class="sep">·</span>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="/#contato" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
+      </nav>
+      <button class="menu-btn" data-i18n-aria="nav_menu_open" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
+        <svg class="ico-menu" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+        <svg class="ico-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a href="/#servicos"    onclick="closeMenu()" data-i18n="nav_services">O que faço</a>
+      <a href="/#metodo"      onclick="closeMenu()" data-i18n="nav_method">Como trabalho</a>
+      <a href="/#experiencia" onclick="closeMenu()" data-i18n="nav_experience">Experiência</a>
+      <a href="/designops/"   onclick="closeMenu()" data-i18n="nav_designops">DesignOps</a>
+      <a href="/blog/"        onclick="closeMenu()" data-i18n="nav_blog">Publicações</a>
+      <div class="lang-switcher mobile-lang">
+        <button data-lang="pt" onclick="setLang('pt')">PT</button>
+        <span class="sep">·</span>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="/#contato"     onclick="closeMenu()" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- BLOCO 1 — HERO DA PÁGINA -->
+    <section class="block dop-hero">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow" data-i18n="dop_hero_eyebrow">DesignOps &amp; ProductOps</span>
+          <h1 data-i18n="dop_hero_h1">[aguardando conteúdo]</h1>
+          <p data-i18n-html="dop_hero_p">[aguardando conteúdo]</p>
+        </div>
+        <div class="dop-actions reveal">
+          <a href="#dop-contato" class="btn btn-primary" data-i18n="dop_hero_cta1">Vamos conversar</a>
+          <a href="#dop-maturidade" class="btn btn-ghost" data-i18n="dop_hero_cta2">Ver os níveis de maturidade</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 2 — O QUE É DESIGNOPS (e o que não é) -->
+    <section class="block" id="dop-sobre">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow" data-i18n="dop_about_eyebrow">O que é DesignOps</span>
+          <h2 data-i18n="dop_about_h2">[aguardando conteúdo]</h2>
+        </div>
+        <div class="dop-body">
+          <!-- TODO: descrição do DesignOps + lista "o que não é" -->
+          <p data-i18n="dop_about_p1">[aguardando conteúdo]</p>
+          <p data-i18n="dop_about_p2">[aguardando conteúdo]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 3 — VISÃO CORRETA DA OPERAÇÃO COMO UM TODO -->
+    <section class="block" id="dop-operacao">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow" data-i18n="dop_ops_eyebrow">A operação como um todo</span>
+          <h2 data-i18n="dop_ops_h2">[aguardando conteúdo]</h2>
+        </div>
+        <div class="dop-body">
+          <!-- TODO: sintomas de otimizar a parte sem ver o sistema + consequências -->
+          <p data-i18n="dop_ops_p1">[aguardando conteúdo]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 4 — NÍVEIS DE MATURIDADE DE DESIGN E PRODUTO -->
+    <section class="block" id="dop-maturidade">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow" data-i18n="dop_levels_eyebrow">Maturidade</span>
+          <h2 data-i18n="dop_levels_h2">[aguardando conteúdo]</h2>
+          <p data-i18n="dop_levels_p">[aguardando conteúdo]</p>
+        </div>
+        <!-- Quantidade de níveis e textos vêm do conteúdo; ajustar --levels ao total de <li> -->
+        <ol class="levels" style="--levels:4">
+          <li class="level">
+            <div class="level-head">
+              <span class="level-tag" data-i18n="dop_l1_tag">Nível 1</span>
+              <h3 data-i18n="dop_l1_h3">[aguardando conteúdo]</h3>
+              <span class="level-scale" aria-hidden="true"><span></span></span>
+            </div>
+            <div class="level-body">
+              <p><strong data-i18n="dop_l1_looks_label">Como se parece:</strong> <span data-i18n="dop_l1_looks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l1_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l1_unlocks">[aguardando conteúdo]</span></p>
+            </div>
+          </li>
+          <li class="level">
+            <div class="level-head">
+              <span class="level-tag" data-i18n="dop_l2_tag">Nível 2</span>
+              <h3 data-i18n="dop_l2_h3">[aguardando conteúdo]</h3>
+              <span class="level-scale" aria-hidden="true"><span></span></span>
+            </div>
+            <div class="level-body">
+              <p><strong data-i18n="dop_l2_looks_label">Como se parece:</strong> <span data-i18n="dop_l2_looks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l2_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l2_unlocks">[aguardando conteúdo]</span></p>
+            </div>
+          </li>
+          <li class="level">
+            <div class="level-head">
+              <span class="level-tag" data-i18n="dop_l3_tag">Nível 3</span>
+              <h3 data-i18n="dop_l3_h3">[aguardando conteúdo]</h3>
+              <span class="level-scale" aria-hidden="true"><span></span></span>
+            </div>
+            <div class="level-body">
+              <p><strong data-i18n="dop_l3_looks_label">Como se parece:</strong> <span data-i18n="dop_l3_looks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l3_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l3_unlocks">[aguardando conteúdo]</span></p>
+            </div>
+          </li>
+          <li class="level">
+            <div class="level-head">
+              <span class="level-tag" data-i18n="dop_l4_tag">Nível 4</span>
+              <h3 data-i18n="dop_l4_h3">[aguardando conteúdo]</h3>
+              <span class="level-scale" aria-hidden="true"><span></span></span>
+            </div>
+            <div class="level-body">
+              <p><strong data-i18n="dop_l4_looks_label">Como se parece:</strong> <span data-i18n="dop_l4_looks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l4_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l4_unlocks">[aguardando conteúdo]</span></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- BLOCO 5 — TIMES DE DESIGN EM CONSULTORIA E INOVAÇÃO -->
+    <section class="block" id="dop-times">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow" data-i18n="dop_teams_eyebrow">Consultoria e inovação</span>
+          <h2 data-i18n="dop_teams_h2">[aguardando conteúdo]</h2>
+        </div>
+        <div class="dop-body">
+          <!-- TODO: especificidades de times que atendem clientes (multi-projeto, alocação, transferência de conhecimento, reuso entre contas) -->
+          <p data-i18n="dop_teams_p1">[aguardando conteúdo]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 6 — COMO EU CONDUZO (formato, duração, entregáveis) -->
+    <section class="block" id="dop-conducao">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow" data-i18n="dop_how_eyebrow">Como eu conduzo</span>
+          <h2 data-i18n="dop_how_h2">[aguardando conteúdo]</h2>
+          <p data-i18n="dop_how_p">[aguardando conteúdo]</p>
+        </div>
+        <!-- TODO: etapas do engajamento (componente .steps) -->
+      </div>
+    </section>
+
+    <!-- BLOCO 7 — PROVA (logos de clientes já usados na home) -->
+    <section class="block" id="dop-prova">
+      <div class="container exp-wrap">
+        <div class="exp-copy">
+          <span class="eyebrow" data-i18n="dop_proof_eyebrow">Onde isso já rodou</span>
+          <h2 data-i18n="dop_proof_h2">[aguardando conteúdo]</h2>
+          <!-- TODO: 1–2 frases de contexto (sem citar nomes de projeto sem autorização) -->
+        </div>
+        <div class="logos" data-i18n-aria="dop_proof_logos_aria" aria-label="Empresas em cujos projetos atuei">
+          <span><img src="../public/images/clientes/normalized_bradesco.png" alt="Bradesco"></span>
+          <span><img src="../public/images/clientes/normalized_santander.png" alt="Santander"></span>
+          <span><img src="../public/images/clientes/normalized_logo_globo_corporativa_principal_preto.png" alt="Globo"></span>
+          <span><img src="../public/images/clientes/normalized_bosch.png" alt="Bosch"></span>
+          <span class="no-filter"><img src="../public/images/clientes/normalized_redbullcom-logo_double-with-text.png" alt="Red Bull"></span>
+          <span><img src="../public/images/clientes/normalized_ab-inbev.png" alt="AB InBev"></span>
+          <span class="logo-lg"><img src="../public/images/clientes/normalized_Ingenico-black-RGB.png" alt="Ingenico"></span>
+          <span class="logo-sm"><img src="../public/images/clientes/normalized_logo-asus-4096.png" alt="Asus"></span>
+          <span class="logo-sm"><img src="../public/images/clientes/normalized_logo-motorola-4096.png" alt="Motorola"></span>
+          <span class="no-filter"><img src="../public/images/clientes/normalized_logo_acqua.png" alt="Acqua Global"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 8 — CTA FINAL (reaproveitado da home) -->
+    <section class="block contact" id="dop-contato">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow" data-i18n="cnt_eyebrow">Vamos conversar</span>
+            <h2 data-i18n="cnt_h2">Quer destravar soluções e estratégias?</h2>
+            <p class="cd" data-i18n="cnt_p">Me conta o desafio. A gente vê juntos o melhor método para resolver o seu problema — e como seria na prática.</p>
+            <div class="clist">
+              <a href="mailto:contato@brunoventorin.com.br">
+                <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                contato@brunoventorin.com.br
+              </a>
+              <a href="https://linkedin.com/in/bruno-ventorin" target="_blank" rel="noopener">
+                <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .92.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div class="contact-cta">
+            <div class="contact-photo">
+              <img src="../public/images/profile.jpg" alt="Bruno Ventorin">
+            </div>
+            <a href="mailto:contato@brunoventorin.com.br?subject=DesignOps%20e%20ProductOps" class="btn btn-primary"><span data-i18n="cnt_cta">Mandar uma mensagem</span> <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <span class="wordmark">Bruno Ventorin<span>.</span></span>
+      <span data-i18n="foot_tagline">Facilitação estratégica · Campinas, SP</span>
+      <span>© 2026 Bruno Ventorin</span>
+    </div>
+    <div class="container foot-cc">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener license" data-i18n-aria="cc_aria" aria-label="Licença Creative Commons BY-NC-SA 4.0">
+        <img src="../public/images/cc_by-bc-sa.png" alt="CC BY-NC-SA 4.0" />
+      </a>
+      <span data-i18n-html="cc_text">O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.</span>
+    </div>
+  </footer>
+
+  <script>
+    const T = {
+      pt: {
+        nav_services: 'O que faço',
+        nav_method: 'Como trabalho',
+        nav_experience: 'Experiência',
+        nav_designops: 'DesignOps',
+        nav_blog: 'Publicações',
+        nav_cta: 'Vamos conversar',
+        nav_menu_open: 'Abrir menu',
+        foot_tagline: 'Facilitação estratégica · Campinas, SP',
+        cc_aria: 'Licença Creative Commons BY-NC-SA 4.0',
+        cc_text: 'O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.',
+
+        dop_hero_eyebrow: 'DesignOps & ProductOps',
+        dop_hero_h1: '[aguardando conteúdo]',
+        dop_hero_p: '[aguardando conteúdo]',
+        dop_hero_cta1: 'Vamos conversar',
+        dop_hero_cta2: 'Ver os níveis de maturidade',
+
+        dop_about_eyebrow: 'O que é DesignOps',
+        dop_about_h2: '[aguardando conteúdo]',
+        dop_about_p1: '[aguardando conteúdo]',
+        dop_about_p2: '[aguardando conteúdo]',
+
+        dop_ops_eyebrow: 'A operação como um todo',
+        dop_ops_h2: '[aguardando conteúdo]',
+        dop_ops_p1: '[aguardando conteúdo]',
+
+        dop_levels_eyebrow: 'Maturidade',
+        dop_levels_h2: '[aguardando conteúdo]',
+        dop_levels_p: '[aguardando conteúdo]',
+        dop_l1_tag: 'Nível 1', dop_l1_h3: '[aguardando conteúdo]',
+        dop_l1_looks_label: 'Como se parece:', dop_l1_looks: '[aguardando conteúdo]',
+        dop_l1_unlocks_label: 'O que destrava:', dop_l1_unlocks: '[aguardando conteúdo]',
+        dop_l2_tag: 'Nível 2', dop_l2_h3: '[aguardando conteúdo]',
+        dop_l2_looks_label: 'Como se parece:', dop_l2_looks: '[aguardando conteúdo]',
+        dop_l2_unlocks_label: 'O que destrava:', dop_l2_unlocks: '[aguardando conteúdo]',
+        dop_l3_tag: 'Nível 3', dop_l3_h3: '[aguardando conteúdo]',
+        dop_l3_looks_label: 'Como se parece:', dop_l3_looks: '[aguardando conteúdo]',
+        dop_l3_unlocks_label: 'O que destrava:', dop_l3_unlocks: '[aguardando conteúdo]',
+        dop_l4_tag: 'Nível 4', dop_l4_h3: '[aguardando conteúdo]',
+        dop_l4_looks_label: 'Como se parece:', dop_l4_looks: '[aguardando conteúdo]',
+        dop_l4_unlocks_label: 'O que destrava:', dop_l4_unlocks: '[aguardando conteúdo]',
+
+        dop_teams_eyebrow: 'Consultoria e inovação',
+        dop_teams_h2: '[aguardando conteúdo]',
+        dop_teams_p1: '[aguardando conteúdo]',
+
+        dop_how_eyebrow: 'Como eu conduzo',
+        dop_how_h2: '[aguardando conteúdo]',
+        dop_how_p: '[aguardando conteúdo]',
+
+        dop_proof_eyebrow: 'Onde isso já rodou',
+        dop_proof_h2: '[aguardando conteúdo]',
+        dop_proof_logos_aria: 'Empresas em cujos projetos atuei',
+
+        cnt_eyebrow: 'Vamos conversar',
+        cnt_h2: 'Quer destravar soluções e estratégias?',
+        cnt_p: 'Me conta o desafio. A gente vê juntos o melhor método para resolver o seu problema — e como seria na prática.',
+        cnt_cta: 'Mandar uma mensagem',
+      },
+      // EN ainda não existe: com o mapa vazio o seletor de idioma fica oculto.
+      // Para publicar em inglês, basta preencher as mesmas chaves aqui.
+      en: {},
+    };
+
+    // Página PT-only na v1. Quando T.en ganhar chaves, trocar por:
+    // localStorage.getItem('lang') || (navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en')
+    function getLang() { return 'pt'; }
+
+    function setLang(lang) {
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = T[lang][el.dataset.i18n];
+        if (v !== undefined) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = T[lang][el.dataset.i18nHtml];
+        if (v !== undefined) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const v = T[lang][el.dataset.i18nAria];
+        if (v !== undefined) el.setAttribute('aria-label', v);
+      });
+      document.querySelectorAll('.lang-switcher button').forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.lang === lang)
+      );
+    }
+    applyLang(getLang());
+
+    // Sem traduções, o seletor PT·EN não deve aparecer (clicar em EN deixaria a página em PT com lang="en").
+    if (!Object.keys(T.en).length) {
+      document.querySelectorAll('.lang-switcher').forEach(el => el.setAttribute('hidden', ''));
+    }
+  </script>
+
+  <script>
+    function toggleMenu(btn) {
+      const hdr = document.getElementById('hdr');
+      const open = hdr.classList.toggle('menu-open');
+      btn.setAttribute('aria-expanded', open);
+      btn.querySelector('.ico-menu').style.display = open ? 'none' : '';
+      btn.querySelector('.ico-close').style.display = open ? '' : 'none';
+      document.getElementById('mobileNav').setAttribute('aria-hidden', !open);
+    }
+    function closeMenu() {
+      const hdr = document.getElementById('hdr');
+      hdr.classList.remove('menu-open');
+      const btn = document.querySelector('.menu-btn');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.querySelector('.ico-menu').style.display = '';
+      btn.querySelector('.ico-close').style.display = 'none';
+      document.getElementById('mobileNav').setAttribute('aria-hidden', 'true');
+    }
+    const hdr = document.getElementById('hdr');
+    addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10));
+
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: 0 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
