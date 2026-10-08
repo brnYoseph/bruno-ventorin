@@ -28,6 +28,9 @@ next-env.d.ts
 .pat
 secrets.*
 
+# material de referência (nunca publicar: o GitHub Pages serve tudo que é commitado)
+/references/
+
 # OS
 .DS_Store
 Thumbs.db
