@@ -31,8 +31,8 @@
   --fs-h3:1.28rem;                           /* h3 padrão */
   --fs-h3-lg:1.5rem;                         /* h3 de destaque */
 
-  --lh-body:1.6;                             /* texto corrente */
-  --lh-reading:1.75;                         /* leitura longa */
+  --lh-body:1.5;                             /* texto corrente */
+  --lh-reading:1.6;                          /* leitura longa */
   --lh-heading:1.05;                         /* títulos */
   --lh-display:1;                            /* números grandes */
 
