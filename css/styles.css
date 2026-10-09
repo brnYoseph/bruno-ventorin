@@ -325,7 +325,7 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 .cube-face{
   --face-scale:1;
   position:absolute;display:block;width:37.594%;aspect-ratio:1;overflow:hidden;cursor:pointer;
-  background:var(--ink);border:2px solid var(--line);border-radius:5px;
+  background:var(--ink);border:4px solid var(--line);border-radius:5px;
   outline:0 solid transparent;outline-offset:4px;
   transition:transform 260ms cubic-bezier(.2,.8,.2,1),background-color 240ms ease,filter 240ms ease,outline-color 160ms ease,outline-width 160ms ease;
   will-change:transform;
