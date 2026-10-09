@@ -37,6 +37,9 @@
   --lh-display:1;                            /* números grandes */
 
   --ink-on-dark:rgba(244,240,231,.72);       /* parágrafo sobre fundo escuro */
+
+  /* foco visível — cor funcional (acessibilidade), fora da paleta de marca */
+  --focus-ring:#3B82F6;
 }
 
 /* ============================================================
@@ -309,6 +312,81 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 .level-body p:last-child{margin-bottom:0}
 .level-body strong{color:var(--ink);font-weight:600}
 
+/* ---- pilares: carrossel do cubo isométrico (sem JavaScript — estados via :checked) ---- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.pillars fieldset{margin:0;padding:0;border:0}
+.pillars-input{position:absolute;width:1px;height:1px;margin:-1px;opacity:0;pointer-events:none}
+
+.pillars-grid{display:grid;grid-template-columns:min(38%,266px) 1fr;gap:56px;align-items:center}
+.pillars-cube-col{display:flex;flex-direction:column;align-items:center;gap:26px}
+
+.cube{position:relative;width:min(78vw,266px);aspect-ratio:266/272;isolation:isolate}
+.cube-face{
+  --face-scale:1;
+  position:absolute;display:block;width:37.594%;aspect-ratio:1;overflow:hidden;cursor:pointer;
+  background:var(--ink);border:2px solid var(--line);border-radius:5px;
+  outline:0 solid transparent;outline-offset:4px;
+  transition:transform 260ms cubic-bezier(.2,.8,.2,1),background-color 240ms ease,filter 240ms ease,outline-color 160ms ease,outline-width 160ms ease;
+  will-change:transform;
+}
+.cube-face--top{z-index:3;top:12.5%;left:31.43%;transform:rotate(-30deg) skewX(30deg) scaleY(-.866) scale(var(--face-scale))}
+.cube-face--left{z-index:2;top:41.18%;left:14.4%;transform:rotate(-150deg) skewX(30deg) scaleY(-.866) scale(var(--face-scale))}
+.cube-face--right{z-index:1;top:41.18%;left:48.23%;transform:rotate(-30deg) skewX(-30deg) scaleY(.866) scale(var(--face-scale))}
+.cube-face:hover{--face-scale:1.018;filter:brightness(1.1)}
+
+/* um pilar está sempre ativo: as outras faces recuam */
+#pillar-pratica:checked ~ .pillars-grid .cube-face,
+#pillar-pessoas:checked ~ .pillars-grid .cube-face,
+#pillar-plataforma:checked ~ .pillars-grid .cube-face{background:var(--ink-soft)}
+/* face ativa */
+#pillar-pratica:checked ~ .pillars-grid .cube-face--top,
+#pillar-pessoas:checked ~ .pillars-grid .cube-face--right,
+#pillar-plataforma:checked ~ .pillars-grid .cube-face--left{--face-scale:1.025;z-index:4;background:var(--accent);filter:saturate(1.08)}
+#pillar-pratica:checked ~ .pillars-grid .cube-face--top:hover,
+#pillar-pessoas:checked ~ .pillars-grid .cube-face--right:hover,
+#pillar-plataforma:checked ~ .pillars-grid .cube-face--left:hover{--face-scale:1.035}
+/* o input é invisível, então o anel de foco vai na face correspondente */
+#pillar-pratica:focus-visible ~ .pillars-grid .cube-face--top,
+#pillar-pessoas:focus-visible ~ .pillars-grid .cube-face--right,
+#pillar-plataforma:focus-visible ~ .pillars-grid .cube-face--left{outline-width:4px;outline-color:var(--focus-ring)}
+
+/* painéis empilhados na mesma célula: a troca anima sem o layout pular */
+.pillars-panels{display:grid}
+.pillar-panel{
+  grid-area:1/1;
+  opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity 380ms ease,transform 380ms cubic-bezier(.2,.8,.2,1),visibility 0s linear 380ms;
+}
+#pillar-pratica:checked ~ .pillars-grid .pillar-panel--pratica,
+#pillar-pessoas:checked ~ .pillars-grid .pillar-panel--pessoas,
+#pillar-plataforma:checked ~ .pillars-grid .pillar-panel--plataforma{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+
+.pillar-panel p{color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading);margin-bottom:18px}
+.pillar-panel ul{list-style:none;padding:0;margin:0}
+.pillar-panel li{position:relative;padding-left:20px;margin-bottom:8px;font-size:var(--fs-read);line-height:var(--lh-reading);color:var(--ink-soft)}
+.pillar-panel li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--accent);border-radius:50%}
+
+/* controles do carrossel: um par de setas por estado, mais o título do pilar ativo */
+.pillars-nav{display:flex;align-items:center;justify-content:center;gap:18px}
+.pillars-arrow{
+  display:none;align-items:center;justify-content:center;width:40px;height:40px;flex:0 0 auto;
+  border:1px solid var(--line);border-radius:50%;background:var(--paper-2);color:var(--ink);cursor:pointer;
+  transition:background-color .2s,color .2s,border-color .2s,transform .2s;
+}
+.pillars-arrow:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pillars-arrow:active{transform:scale(.93)}
+#pillar-pratica:checked ~ .pillars-grid .pillars-arrow[data-state="pratica"],
+#pillar-pessoas:checked ~ .pillars-grid .pillars-arrow[data-state="pessoas"],
+#pillar-plataforma:checked ~ .pillars-grid .pillars-arrow[data-state="plataforma"]{display:inline-flex}
+
+/* título do pilar ativo — mesma tipografia dos h3 do site (Fraunces), sem caixa alta */
+.pillars-caption{min-width:11ch;text-align:center;font-size:var(--fs-h3);color:var(--ink)}
+.pillars-caption span{display:none}
+#pillar-pratica:checked ~ .pillars-grid .pillars-caption__pratica,
+#pillar-pessoas:checked ~ .pillars-grid .pillars-caption__pessoas,
+#pillar-plataforma:checked ~ .pillars-grid .pillars-caption__plataforma{display:inline}
+
 /* ---- página 404 ---- */
 .block.err-page{padding:96px 0 120px}
 .err-page h1{font-size:var(--fs-h1-sm);margin-bottom:22px}
@@ -326,6 +404,7 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
   .blog-grid{grid-template-columns:repeat(2,1fr)}
   .blog-controls{flex-direction:column;align-items:flex-start}
   .level{grid-template-columns:1fr;gap:16px}
+  .pillars-grid{grid-template-columns:1fr;gap:36px}
 }
 @media(max-width:520px){
   .steps{grid-template-columns:1fr}
@@ -334,6 +413,18 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
   .blog-search input{width:160px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .cube-face{transition:background-color 1ms linear,outline-color 1ms linear,outline-width 1ms linear}
+  .cube-face:hover{filter:none}
+  .cube-face,
+  .cube-face:hover,
+  #pillar-pratica:checked ~ .pillars-grid .cube-face--top,
+  #pillar-pratica:checked ~ .pillars-grid .cube-face--top:hover,
+  #pillar-pessoas:checked ~ .pillars-grid .cube-face--right,
+  #pillar-pessoas:checked ~ .pillars-grid .cube-face--right:hover,
+  #pillar-plataforma:checked ~ .pillars-grid .cube-face--left,
+  #pillar-plataforma:checked ~ .pillars-grid .cube-face--left:hover{--face-scale:1}
+}
 
 /* ---- language switcher ---- */
 .lang-switcher{display:flex;align-items:center;gap:5px}

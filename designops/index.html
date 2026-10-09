@@ -116,6 +116,104 @@
       </div>
     </section>
 
+    <!-- PILARES — cubo seletor isométrico (HTML/CSS puro, sem JavaScript) -->
+    <section class="block" id="dop-pilares">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow" data-i18n="dop_pillars_eyebrow">Pilares</span>
+          <h2 data-i18n="dop_pillars_h2">Pilares do DesignOps</h2>
+          <p data-i18n="dop_pillars_p">Organizo a abordagem em três grandes áreas principais:</p>
+        </div>
+
+        <div class="pillars">
+          <fieldset>
+            <legend class="sr-only" data-i18n="dop_pillars_legend">Escolha um pilar do DesignOps</legend>
+
+            <input class="pillars-input" type="radio" name="pillar" id="pillar-pratica" value="pratica" checked />
+            <input class="pillars-input" type="radio" name="pillar" id="pillar-pessoas" value="pessoas" />
+            <input class="pillars-input" type="radio" name="pillar" id="pillar-plataforma" value="plataforma" />
+
+            <div class="pillars-grid">
+              <div class="pillars-cube-col">
+                <div class="cube">
+                  <label class="cube-face cube-face--top" for="pillar-pratica">
+                    <span class="sr-only" data-i18n="dop_pillar_pratica_h3">Prática</span>
+                  </label>
+                  <label class="cube-face cube-face--left" for="pillar-plataforma">
+                    <span class="sr-only" data-i18n="dop_pillar_plataforma_h3">Plataforma</span>
+                  </label>
+                  <label class="cube-face cube-face--right" for="pillar-pessoas">
+                    <span class="sr-only" data-i18n="dop_pillar_pessoas_h3">Pessoas</span>
+                  </label>
+                </div>
+
+                <!-- setas do carrossel + título do pilar ativo, logo abaixo do cubo -->
+                <div class="pillars-nav">
+                  <label class="pillars-arrow" data-state="pratica" for="pillar-plataforma" title="Pilar anterior" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                  </label>
+                  <label class="pillars-arrow" data-state="pessoas" for="pillar-pratica" title="Pilar anterior" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                  </label>
+                  <label class="pillars-arrow" data-state="plataforma" for="pillar-pessoas" title="Pilar anterior" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                  </label>
+
+                  <h3 class="pillars-caption" aria-live="polite">
+                    <span class="pillars-caption__pratica" data-i18n="dop_pillar_pratica_h3">Prática</span>
+                    <span class="pillars-caption__pessoas" data-i18n="dop_pillar_pessoas_h3">Pessoas</span>
+                    <span class="pillars-caption__plataforma" data-i18n="dop_pillar_plataforma_h3">Plataforma</span>
+                  </h3>
+
+                  <label class="pillars-arrow" data-state="pratica" for="pillar-pessoas" title="Próximo pilar" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                  </label>
+                  <label class="pillars-arrow" data-state="pessoas" for="pillar-plataforma" title="Próximo pilar" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                  </label>
+                  <label class="pillars-arrow" data-state="plataforma" for="pillar-pratica" title="Próximo pilar" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                  </label>
+                </div>
+              </div>
+
+              <div class="pillars-panels">
+                <article class="pillar-panel pillar-panel--pratica">
+                  <p data-i18n="dop_pillar_pratica_p">Escolher as ferramentas corretas, gerir seu uso e otimizar os processos. Ações que reforçam boas práticas e aumentam a segurança técnica e a maturidade das equipes e de seus clientes na disciplina.</p>
+                  <ul>
+                    <li data-i18n="dop_pillar_pratica_li1">Otimização de ferramental, seus custos e novas tecnologias e técnicas</li>
+                    <li data-i18n="dop_pillar_pratica_li2">Processos e integração com desenvolvimento e produto</li>
+                    <li data-i18n="dop_pillar_pratica_li3">Boas práticas e qualidade dos artefatos</li>
+                  </ul>
+                </article>
+
+                <article class="pillar-panel pillar-panel--pessoas">
+                  <p data-i18n="dop_pillar_pessoas_p">A multidisciplinaridade do design traz complexidade em se manter atualizado, e sua natureza criativa expõe a pessoa designer ao que chamamos de “atrito multilateral”, uma das principais causas de desgaste que pode levar ao burnout e à insatisfação. Criamos mecanismos que sustentam o designer e criam um ambiente saudável e exemplar.</p>
+                  <ul>
+                    <li data-i18n="dop_pillar_pessoas_li1">Mapeamento de competências</li>
+                    <li data-i18n="dop_pillar_pessoas_li2">Programas de capacitação contínua</li>
+                    <li data-i18n="dop_pillar_pessoas_li3">Pesquisa de clima com foco em design</li>
+                    <li data-i18n="dop_pillar_pessoas_li4">Desenho de ladder de carreira (técnico)</li>
+                  </ul>
+                </article>
+
+                <article class="pillar-panel pillar-panel--plataforma">
+                  <p data-i18n="dop_pillar_plataforma_p">Este pilar trata do invisível por trás do design; toda ação pontual necessita de uma estrutura transversal robusta, atuando para manter os pontos conectados e coletar dados que servem de inteligência estratégica para a liderança.</p>
+                  <ul>
+                    <li data-i18n="dop_pillar_plataforma_li1">Design System e componentização</li>
+                    <li data-i18n="dop_pillar_plataforma_li2">Comunidades de prática e cultura</li>
+                    <li data-i18n="dop_pillar_plataforma_li3">Métricas de equipe e inteligência estratégica</li>
+                    <li data-i18n="dop_pillar_plataforma_li4">Gerenciamento de demanda</li>
+                  </ul>
+                </article>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </section>
+
     <!-- BLOCO 3 — VISÃO CORRETA DA OPERAÇÃO COMO UM TODO -->
     <section class="block" id="dop-operacao">
       <div class="container">
@@ -309,6 +407,31 @@
         dop_ops_eyebrow: 'A operação como um todo',
         dop_ops_h2: '[aguardando conteúdo]',
         dop_ops_p1: '[aguardando conteúdo]',
+
+        dop_pillars_eyebrow: 'Pilares',
+        dop_pillars_h2: 'Pilares do DesignOps',
+        dop_pillars_p: 'Organizo a abordagem em três grandes áreas principais:',
+        dop_pillars_legend: 'Escolha um pilar do DesignOps',
+
+        dop_pillar_pratica_h3: 'Prática',
+        dop_pillar_pratica_p: 'Escolher as ferramentas corretas, gerir seu uso e otimizar os processos. Ações que reforçam boas práticas e aumentam a segurança técnica e a maturidade das equipes e de seus clientes na disciplina.',
+        dop_pillar_pratica_li1: 'Otimização de ferramental, seus custos e novas tecnologias e técnicas',
+        dop_pillar_pratica_li2: 'Processos e integração com desenvolvimento e produto',
+        dop_pillar_pratica_li3: 'Boas práticas e qualidade dos artefatos',
+
+        dop_pillar_pessoas_h3: 'Pessoas',
+        dop_pillar_pessoas_p: 'A multidisciplinaridade do design traz complexidade em se manter atualizado, e sua natureza criativa expõe a pessoa designer ao que chamamos de “atrito multilateral”, uma das principais causas de desgaste que pode levar ao burnout e à insatisfação. Criamos mecanismos que sustentam o designer e criam um ambiente saudável e exemplar.',
+        dop_pillar_pessoas_li1: 'Mapeamento de competências',
+        dop_pillar_pessoas_li2: 'Programas de capacitação contínua',
+        dop_pillar_pessoas_li3: 'Pesquisa de clima com foco em design',
+        dop_pillar_pessoas_li4: 'Desenho de ladder de carreira (técnico)',
+
+        dop_pillar_plataforma_h3: 'Plataforma',
+        dop_pillar_plataforma_p: 'Este pilar trata do invisível por trás do design; toda ação pontual necessita de uma estrutura transversal robusta, atuando para manter os pontos conectados e coletar dados que servem de inteligência estratégica para a liderança.',
+        dop_pillar_plataforma_li1: 'Design System e componentização',
+        dop_pillar_plataforma_li2: 'Comunidades de prática e cultura',
+        dop_pillar_plataforma_li3: 'Métricas de equipe e inteligência estratégica',
+        dop_pillar_plataforma_li4: 'Gerenciamento de demanda',
 
         dop_levels_eyebrow: 'Maturidade',
         dop_levels_h2: '[aguardando conteúdo]',
