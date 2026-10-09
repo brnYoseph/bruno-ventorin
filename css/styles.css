@@ -353,8 +353,11 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 
 /* painéis empilhados na mesma célula: a troca anima sem o layout pular */
 .pillars-panels{display:grid}
+/* conteúdo em duas colunas: parágrafo e lista. auto-fit empilha sozinho quando
+   não houver largura suficiente, sem depender de breakpoint */
 .pillar-panel{
   grid-area:1/1;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:18px 44px;align-items:start;
   opacity:0;visibility:hidden;transform:translateY(12px);
   transition:opacity 380ms ease,transform 380ms cubic-bezier(.2,.8,.2,1),visibility 0s linear 380ms;
 }
@@ -362,7 +365,7 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 #pillar-pessoas:checked ~ .pillars-grid .pillar-panel--pessoas,
 #pillar-plataforma:checked ~ .pillars-grid .pillar-panel--plataforma{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 
-.pillar-panel p{color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading);margin-bottom:18px}
+.pillar-panel p{color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading);margin-bottom:0}
 .pillar-panel ul{list-style:none;padding:0;margin:0}
 .pillar-panel li{position:relative;padding-left:20px;margin-bottom:8px;font-size:var(--fs-read);line-height:var(--lh-reading);color:var(--ink-soft)}
 .pillar-panel li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--accent);border-radius:50%}
