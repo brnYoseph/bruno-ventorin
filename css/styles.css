@@ -289,11 +289,63 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 
 /* ---- página DesignOps ---- */
 .block.dop-hero{border-top:none;padding:104px 0 88px}
+/* landing page: blocos sem divisória — o respiro vem do padding entre eles */
+#dop-beneficios{border-top:none}
+#dop-conducao,#dop-maturidade,#dop-pilares,#dop-diferenciais{border-top:none}
+#dop-maturidade,#dop-pilares,#dop-diferenciais{padding-top:0}
 .dop-hero .sec-head{max-width:760px;margin-bottom:0}
 .dop-hero h1{font-size:var(--fs-h1);margin:6px 0 26px}
-.dop-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
-.dop-body{max-width:720px}
-.dop-body p{color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading);margin-bottom:22px}
+.dop-hero p{max-width:640px;color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading);margin-bottom:18px}
+.dop-hero p:first-of-type,
+.dop-hero p:nth-of-type(2){font-size:var(--fs-lead);line-height:1.45;color:var(--ink)}
+.dop-hero .dop-hero-punch{font-family:var(--font-display);font-style:italic;font-size:var(--fs-h3);line-height:1.3;color:var(--accent);margin-bottom:0}
+
+/* ---- decoração de fundo em parallax — mesma direção de arte da home ---- */
+.dop-deco{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;color:var(--accent)}
+.dop-hero,.dop-benefits,#dop-maturidade,#dop-diferenciais{position:relative}
+.dop-hero .container,.dop-benefits .container,#dop-maturidade .container,#dop-diferenciais .container{position:relative;z-index:1}
+.deco{position:absolute;width:var(--deco-size,160px);height:auto;opacity:var(--deco-opacity,.22);will-change:transform;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.deco-dot{position:absolute;display:block;width:11px;height:11px;background:var(--accent);border-radius:50%;will-change:transform}
+.deco-hex--hero{--deco-size:clamp(120px,18vw,240px);top:-52px;right:-30px;opacity:.2}
+.deco-cube--hero{--deco-size:clamp(96px,13vw,168px);top:44%;right:8%}
+.deco-dot--hero{right:34%;top:22%}
+.deco-cube--benefits{--deco-size:clamp(110px,15vw,210px);color:var(--accent);opacity:.3;left:-48px;bottom:-56px}
+.deco-hex--benefits{--deco-size:clamp(120px,17vw,230px);opacity:.22;right:-40px;top:-40px}
+.deco-hex--maturidade{--deco-size:clamp(110px,14vw,190px);left:-64px;top:14%;opacity:.16}
+.deco-cube--diff{--deco-size:clamp(110px,15vw,200px);right:-36px;top:8%;opacity:.18}
+.deco-hex--diff{--deco-size:clamp(90px,12vw,150px);right:18%;bottom:-46px;opacity:.14}
+
+/* benefícios — bloco em cores invertidas */
+.dop-benefits{background:var(--ink);color:var(--paper)}
+.dop-benefits .sec-head h2{color:var(--paper)}
+.benefits{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px 44px;counter-reset:benefit}
+.benefits li{display:grid;grid-template-columns:52px 1fr;align-items:start;color:var(--ink-on-dark);font-size:var(--fs-read);line-height:var(--lh-reading)}
+/* o número ocupa a caixa da 1ª linha do texto; o translateY compensa o espaço interno (leading) acima das minúsculas */
+.benefits li::before{counter-increment:benefit;content:counter(benefit,decimal-leading-zero);font-family:var(--font-display);font-size:1.5rem;line-height:calc(var(--fs-read) * var(--lh-reading));color:var(--accent);transform:translateY(.06em)}
+
+/* cinco etapas do engajamento — mesma linguagem visual de .steps da home */
+.dop-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dop-steps .step{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:30px}
+.dop-steps .step-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.dop-steps .step-head .sn{margin-bottom:0}
+.dop-steps .step-icon{display:inline-flex;color:var(--accent)}
+.dop-steps .step-icon svg{width:24px;height:24px}
+.dop-steps .step ul{list-style:none;display:grid;gap:6px;margin-top:12px}
+.dop-steps .step li{position:relative;padding-left:14px;font-size:var(--fs-small);line-height:1.5;color:var(--ink-soft)}
+.dop-steps .step li::before{content:"";position:absolute;left:0;top:.58em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* diferenciais — carrossel de cards com scroll-snap */
+.diff-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none}
+.diff-track::-webkit-scrollbar{display:none}
+.diff-card{flex:0 0 min(360px,82vw);scroll-snap-align:start;background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:36px;display:flex;flex-direction:column}
+.diff-icon{display:inline-flex;color:var(--accent);margin-bottom:26px}
+.diff-icon svg{width:48px;height:48px}
+.diff-card h3{font-size:var(--fs-h3-lg);margin-bottom:12px}
+.diff-card p{color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading)}
+.diff-nav{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.diff-arrow{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--paper-2);color:var(--ink);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,opacity .2s}
+.diff-arrow:hover:not(:disabled){background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.diff-arrow:disabled{opacity:.35;cursor:default}
 
 /* níveis de maturidade — --levels (total de níveis) define a largura da barra */
 .levels{display:grid;gap:16px;list-style:none}
@@ -312,83 +364,17 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 .level-body p:last-child{margin-bottom:0}
 .level-body strong{color:var(--ink);font-weight:600}
 
-/* ---- pilares: carrossel do cubo isométrico (sem JavaScript — estados via :checked) ---- */
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-.pillars fieldset{margin:0;padding:0;border:0}
-.pillars-input{position:absolute;width:1px;height:1px;margin:-1px;opacity:0;pointer-events:none}
-
-.pillars-grid{display:grid;grid-template-columns:min(38%,266px) 1fr;gap:56px;align-items:center}
-.pillars-cube-col{display:flex;flex-direction:column;align-items:center;gap:26px}
-
-.cube{position:relative;width:min(78vw,266px);aspect-ratio:266/272;isolation:isolate}
-.cube-face{
-  --face-scale:1;
-  position:absolute;display:block;width:37.594%;aspect-ratio:1;overflow:hidden;cursor:pointer;
-  background:var(--ink);border:4px solid var(--line);border-radius:5px;
-  outline:0 solid transparent;outline-offset:4px;
-  transition:transform 260ms cubic-bezier(.2,.8,.2,1),background-color 240ms ease,filter 240ms ease,outline-color 160ms ease,outline-width 160ms ease;
-  will-change:transform;
-}
-.cube-face--top{z-index:3;top:12.5%;left:31.43%;transform:rotate(-30deg) skewX(30deg) scaleY(-.866) scale(var(--face-scale))}
-.cube-face--left{z-index:2;top:41.18%;left:14.4%;transform:rotate(-150deg) skewX(30deg) scaleY(-.866) scale(var(--face-scale))}
-.cube-face--right{z-index:1;top:41.18%;left:48.23%;transform:rotate(-30deg) skewX(-30deg) scaleY(.866) scale(var(--face-scale))}
-.cube-face:hover{--face-scale:1.018;filter:brightness(1.1)}
-
-/* um pilar está sempre ativo: as outras faces recuam */
-#pillar-pratica:checked ~ .pillars-grid .cube-face,
-#pillar-pessoas:checked ~ .pillars-grid .cube-face,
-#pillar-plataforma:checked ~ .pillars-grid .cube-face{background:var(--ink-soft)}
-/* face ativa */
-#pillar-pratica:checked ~ .pillars-grid .cube-face--top,
-#pillar-pessoas:checked ~ .pillars-grid .cube-face--right,
-#pillar-plataforma:checked ~ .pillars-grid .cube-face--left{--face-scale:1.025;z-index:4;background:var(--accent);filter:saturate(1.08)}
-#pillar-pratica:checked ~ .pillars-grid .cube-face--top:hover,
-#pillar-pessoas:checked ~ .pillars-grid .cube-face--right:hover,
-#pillar-plataforma:checked ~ .pillars-grid .cube-face--left:hover{--face-scale:1.035}
-/* o input é invisível, então o anel de foco vai na face correspondente */
-#pillar-pratica:focus-visible ~ .pillars-grid .cube-face--top,
-#pillar-pessoas:focus-visible ~ .pillars-grid .cube-face--right,
-#pillar-plataforma:focus-visible ~ .pillars-grid .cube-face--left{outline-width:4px;outline-color:var(--focus-ring)}
-
-/* painéis empilhados na mesma célula: a troca anima sem o layout pular */
-.pillars-panels{display:grid}
-/* conteúdo em duas colunas: parágrafo e lista. auto-fit empilha sozinho quando
-   não houver largura suficiente, sem depender de breakpoint */
-.pillar-panel{
-  grid-area:1/1;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:18px 44px;align-items:start;
-  opacity:0;visibility:hidden;transform:translateY(12px);
-  transition:opacity 380ms ease,transform 380ms cubic-bezier(.2,.8,.2,1),visibility 0s linear 380ms;
-}
-#pillar-pratica:checked ~ .pillars-grid .pillar-panel--pratica,
-#pillar-pessoas:checked ~ .pillars-grid .pillar-panel--pessoas,
-#pillar-plataforma:checked ~ .pillars-grid .pillar-panel--plataforma{opacity:1;visibility:visible;transform:none;transition-delay:0s}
-
-.pillar-panel p{color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading);margin-bottom:0}
-.pillar-panel ul{list-style:none;padding:0;margin:0}
-.pillar-panel li{position:relative;padding-left:20px;margin-bottom:8px;font-size:var(--fs-read);line-height:var(--lh-reading);color:var(--ink-soft)}
-.pillar-panel li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--accent);border-radius:50%}
-
-/* controles do carrossel: um par de setas por estado, mais o título do pilar ativo */
-.pillars-nav{display:flex;align-items:center;justify-content:center;gap:18px}
-.pillars-arrow{
-  display:none;align-items:center;justify-content:center;width:40px;height:40px;flex:0 0 auto;
-  border:1px solid var(--line);border-radius:50%;background:var(--paper-2);color:var(--ink);cursor:pointer;
-  transition:background-color .2s,color .2s,border-color .2s,transform .2s;
-}
-.pillars-arrow:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.pillars-arrow:active{transform:scale(.93)}
-#pillar-pratica:checked ~ .pillars-grid .pillars-arrow[data-state="pratica"],
-#pillar-pessoas:checked ~ .pillars-grid .pillars-arrow[data-state="pessoas"],
-#pillar-plataforma:checked ~ .pillars-grid .pillars-arrow[data-state="plataforma"]{display:inline-flex}
-
-/* título do pilar ativo — mesma tipografia dos h3 do site (Fraunces), sem caixa alta */
-.pillars-caption{min-width:11ch;text-align:center;font-size:var(--fs-h3);color:var(--ink)}
-.pillars-caption span{display:none}
-#pillar-pratica:checked ~ .pillars-grid .pillars-caption__pratica,
-#pillar-pessoas:checked ~ .pillars-grid .pillars-caption__pessoas,
-#pillar-plataforma:checked ~ .pillars-grid .pillars-caption__plataforma{display:inline}
+/* ---- pilares: três colunas com ícone, nome, descrição e tópicos ---- */
+.pillars-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px 34px;align-items:start}
+.pillar{border-top:1px solid var(--line);padding-top:22px}
+.pillar-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.pillar-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;flex:0 0 auto;color:var(--accent)}
+.pillar-icon svg{width:22px;height:22px}
+.pillar h3{font-size:var(--fs-h3)}
+.pillar p{color:var(--ink-soft);font-size:var(--fs-read);line-height:var(--lh-reading);margin-bottom:16px}
+.pillar ul{list-style:none;padding:0;margin:0}
+.pillar li{position:relative;padding-left:20px;margin-bottom:8px;font-size:var(--fs-read);line-height:var(--lh-reading);color:var(--ink-soft)}
+.pillar li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--accent);border-radius:50%}
 
 /* ---- página 404 ---- */
 .block.err-page{padding:96px 0 120px}
@@ -399,6 +385,7 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 @media(max-width:880px){
   .cards{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr);gap:32px 26px}
+  .dop-steps{gap:16px}
   .exp-wrap{grid-template-columns:1fr;gap:38px}
   .contact-grid{grid-template-columns:1fr;gap:36px}
   nav.main{display:none}
@@ -411,23 +398,14 @@ footer{background:var(--ink);color:rgba(244,240,231,.6);padding:30px 0 0;border-
 }
 @media(max-width:520px){
   .steps{grid-template-columns:1fr}
+  .dop-steps .step{padding:24px}
   .stat{border-right:none;margin-right:0;padding-right:0;margin-bottom:22px}
   .blog-grid{grid-template-columns:1fr}
   .blog-search input{width:160px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){
-  .cube-face{transition:background-color 1ms linear,outline-color 1ms linear,outline-width 1ms linear}
-  .cube-face:hover{filter:none}
-  .cube-face,
-  .cube-face:hover,
-  #pillar-pratica:checked ~ .pillars-grid .cube-face--top,
-  #pillar-pratica:checked ~ .pillars-grid .cube-face--top:hover,
-  #pillar-pessoas:checked ~ .pillars-grid .cube-face--right,
-  #pillar-pessoas:checked ~ .pillars-grid .cube-face--right:hover,
-  #pillar-plataforma:checked ~ .pillars-grid .cube-face--left,
-  #pillar-plataforma:checked ~ .pillars-grid .cube-face--left:hover{--face-scale:1}
-}
+@media(prefers-reduced-motion:reduce){.deco,.deco-dot{transform:none!important}}
+
 
 /* ---- language switcher ---- */
 .lang-switcher{display:flex;align-items:center;gap:5px}

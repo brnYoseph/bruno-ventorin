@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DesignOps &amp; ProductOps · Bruno Ventorin</title>
   <meta name="description" content="Consultoria em DesignOps e ProductOps: leitura da operação de design e produto como um todo, níveis de maturidade e estrutura para times de consultoria e inovação." />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://brunoventorin.com.br/designops/" />
   <meta property="og:site_name" content="Bruno Ventorin" />
   <meta property="og:type" content="website" />
@@ -51,264 +51,294 @@
   <header id="hdr">
     <div class="container hdr">
       <a href="/" class="wordmark">Bruno Ventorin<span>.</span></a>
-      <nav class="main">
-        <a href="/#servicos" data-i18n="nav_services">O que faço</a>
-        <a href="/#metodo" data-i18n="nav_method">Como trabalho</a>
-        <a href="/#experiencia" data-i18n="nav_experience">Experiência</a>
-        <a href="/designops/" aria-current="page" data-i18n="nav_designops">DesignOps</a>
-        <a href="/blog/" data-i18n="nav_blog">Publicações</a>
-        <div class="lang-switcher">
-          <button data-lang="pt" onclick="setLang('pt')">PT</button>
-          <span class="sep">·</span>
-          <button data-lang="en" onclick="setLang('en')">EN</button>
-        </div>
-        <a href="/#contato" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
-      </nav>
-      <button class="menu-btn" data-i18n-aria="nav_menu_open" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
-        <svg class="ico-menu" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
-        <svg class="ico-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
-      </button>
     </div>
-    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="/#servicos"    onclick="closeMenu()" data-i18n="nav_services">O que faço</a>
-      <a href="/#metodo"      onclick="closeMenu()" data-i18n="nav_method">Como trabalho</a>
-      <a href="/#experiencia" onclick="closeMenu()" data-i18n="nav_experience">Experiência</a>
-      <a href="/designops/"   onclick="closeMenu()" data-i18n="nav_designops">DesignOps</a>
-      <a href="/blog/"        onclick="closeMenu()" data-i18n="nav_blog">Publicações</a>
-      <div class="lang-switcher mobile-lang">
-        <button data-lang="pt" onclick="setLang('pt')">PT</button>
-        <span class="sep">·</span>
-        <button data-lang="en" onclick="setLang('en')">EN</button>
-      </div>
-      <a href="/#contato"     onclick="closeMenu()" class="btn btn-primary" data-i18n="nav_cta">Vamos conversar</a>
-    </nav>
   </header>
 
   <main id="top">
 
     <!-- BLOCO 1 — HERO DA PÁGINA -->
     <section class="block dop-hero">
+      <div class="dop-deco" aria-hidden="true">
+        <svg class="deco deco-hex deco-hex--hero" data-parallax="0.18" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><polygon points="50,3 93,27 93,73 50,97 7,73 7,27"/></svg>
+        <svg class="deco deco-cube deco-cube--hero" data-parallax="0.32" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><polygon points="50,8 92,32 50,56 8,32" fill="currentColor" fill-opacity=".07"/><polygon points="50,8 92,32 50,56 8,32"/><polygon points="8,32 50,56 50,98 8,74"/><polygon points="92,32 50,56 50,98 92,74"/></svg>
+        <span class="deco-dot deco-dot--hero" data-parallax="0.42"></span>
+      </div>
       <div class="container">
         <div class="sec-head reveal">
-          <span class="eyebrow" data-i18n="dop_hero_eyebrow">DesignOps &amp; ProductOps</span>
-          <h1 data-i18n="dop_hero_h1">[aguardando conteúdo]</h1>
-          <p data-i18n-html="dop_hero_p">[aguardando conteúdo]</p>
-        </div>
-        <div class="dop-actions reveal">
-          <a href="#dop-contato" class="btn btn-primary" data-i18n="dop_hero_cta1">Vamos conversar</a>
-          <a href="#dop-maturidade" class="btn btn-ghost" data-i18n="dop_hero_cta2">Ver os níveis de maturidade</a>
+          <span class="eyebrow" data-i18n="dop_hero_eyebrow">Estrutura que não engessa. Operação que escala.</span>
+          <h1 data-i18n="dop_hero_h1">Consultoria em DesignOps</h1>
+          <p data-i18n="dop_hero_p1">A resposta sobre como aliar a complexidade criativa do Design ao ritmo constante da tecnologia.</p>
+          <p data-i18n="dop_hero_p2">Criar bases robustas para otimizar o trabalho, amadurecer a disciplina e fomentar um ambiente saudável para que os profissionais possam entregar o melhor.</p>
         </div>
       </div>
     </section>
 
-    <!-- BLOCO 2 — O QUE É DESIGNOPS (e o que não é) -->
-    <section class="block" id="dop-sobre">
+    <!-- BLOCO 2 — BENEFÍCIOS (bloco em cores invertidas) -->
+    <section class="block dop-benefits" id="dop-beneficios">
+      <div class="dop-deco" aria-hidden="true">
+        <svg class="deco deco-cube deco-cube--benefits" data-parallax="0.2" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><polygon points="50,8 92,32 50,56 8,32" fill="currentColor" fill-opacity=".07"/><polygon points="50,8 92,32 50,56 8,32"/><polygon points="8,32 50,56 50,98 8,74"/><polygon points="92,32 50,56 50,98 92,74"/></svg>
+        <svg class="deco deco-hex deco-hex--benefits" data-parallax="0.34" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><polygon points="50,3 93,27 93,73 50,97 7,73 7,27"/></svg>
+      </div>
       <div class="container">
         <div class="sec-head">
-          <span class="eyebrow" data-i18n="dop_about_eyebrow">O que é DesignOps</span>
-          <h2 data-i18n="dop_about_h2">[aguardando conteúdo]</h2>
+          <span class="eyebrow" data-i18n="dop_benefits_eyebrow">Resultados</span>
+          <h2 data-i18n="dop_benefits_h2">Como a transformação acontece</h2>
         </div>
-        <div class="dop-body">
-          <!-- TODO: descrição do DesignOps + lista "o que não é" -->
-          <p data-i18n="dop_about_p1">[aguardando conteúdo]</p>
-          <p data-i18n="dop_about_p2">[aguardando conteúdo]</p>
-        </div>
+        <ol class="benefits">
+          <li data-i18n="dop_benefit_1">Retenção e aumento de engajamento de designers</li>
+          <li data-i18n="dop_benefit_2">Aumento da maturidade de design, sendo diferencial percebido pelos clientes</li>
+          <li data-i18n="dop_benefit_3">Inteligência de operação com números e qualidade medidos onde importa</li>
+          <li data-i18n="dop_benefit_4">Adesão a novas ferramentas de forma crítica, inteligente e sem receitas de bolo</li>
+          <li data-i18n="dop_benefit_5">Construção de um centro de excelência e desenvolvimento de competências</li>
+        </ol>
       </div>
     </section>
 
-    <!-- PILARES — cubo seletor isométrico (HTML/CSS puro, sem JavaScript) -->
-    <section class="block" id="dop-pilares">
+    <!-- BLOCO 3 — MÉTODO (formato, duração, entregáveis) -->
+    <section class="block" id="dop-conducao">
       <div class="container">
         <div class="sec-head">
-          <span class="eyebrow" data-i18n="dop_pillars_eyebrow">Pilares</span>
-          <h2 data-i18n="dop_pillars_h2">Pilares do DesignOps</h2>
-          <p data-i18n="dop_pillars_p">Organizo a abordagem em três grandes áreas principais:</p>
+          <span class="eyebrow" data-i18n="dop_how_eyebrow">Método</span>
+          <h2 data-i18n="dop_how_h2">Como funciona</h2>
+          <p data-i18n="dop_how_p">Aliando estrutura com flexibilidade, o método aplicado fornece uma base estrutural já testada no mercado em equipes grandes e produtos de alto impacto, mas com a flexibilidade de quem conhece bem o mundo da consultoria de tecnologia. O projeto pode ser dividido em cinco passos:</p>
         </div>
-
-        <div class="pillars">
-          <fieldset>
-            <legend class="sr-only" data-i18n="dop_pillars_legend">Escolha um pilar do DesignOps</legend>
-
-            <input class="pillars-input" type="radio" name="pillar" id="pillar-pratica" value="pratica" checked />
-            <input class="pillars-input" type="radio" name="pillar" id="pillar-pessoas" value="pessoas" />
-            <input class="pillars-input" type="radio" name="pillar" id="pillar-plataforma" value="plataforma" />
-
-            <div class="pillars-grid">
-              <div class="pillars-cube-col">
-                <div class="cube">
-                  <label class="cube-face cube-face--top" for="pillar-pratica">
-                    <span class="sr-only" data-i18n="dop_pillar_pratica_h3">Prática</span>
-                  </label>
-                  <label class="cube-face cube-face--left" for="pillar-plataforma">
-                    <span class="sr-only" data-i18n="dop_pillar_plataforma_h3">Plataforma</span>
-                  </label>
-                  <label class="cube-face cube-face--right" for="pillar-pessoas">
-                    <span class="sr-only" data-i18n="dop_pillar_pessoas_h3">Pessoas</span>
-                  </label>
-                </div>
-
-                <!-- setas do carrossel + título do pilar ativo, logo abaixo do cubo -->
-                <div class="pillars-nav">
-                  <label class="pillars-arrow" data-state="pratica" for="pillar-plataforma" title="Pilar anterior" aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-                  </label>
-                  <label class="pillars-arrow" data-state="pessoas" for="pillar-pratica" title="Pilar anterior" aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-                  </label>
-                  <label class="pillars-arrow" data-state="plataforma" for="pillar-pessoas" title="Pilar anterior" aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-                  </label>
-
-                  <h3 class="pillars-caption" aria-live="polite">
-                    <span class="pillars-caption__pratica" data-i18n="dop_pillar_pratica_h3">Prática</span>
-                    <span class="pillars-caption__pessoas" data-i18n="dop_pillar_pessoas_h3">Pessoas</span>
-                    <span class="pillars-caption__plataforma" data-i18n="dop_pillar_plataforma_h3">Plataforma</span>
-                  </h3>
-
-                  <label class="pillars-arrow" data-state="pratica" for="pillar-pessoas" title="Próximo pilar" aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-                  </label>
-                  <label class="pillars-arrow" data-state="pessoas" for="pillar-plataforma" title="Próximo pilar" aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-                  </label>
-                  <label class="pillars-arrow" data-state="plataforma" for="pillar-pratica" title="Próximo pilar" aria-hidden="true">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-                  </label>
-                </div>
-              </div>
-
-              <div class="pillars-panels">
-                <article class="pillar-panel pillar-panel--pratica">
-                  <p data-i18n="dop_pillar_pratica_p">Escolher as ferramentas corretas, gerir seu uso e otimizar os processos. Ações que reforçam boas práticas e aumentam a segurança técnica e a maturidade das equipes e de seus clientes na disciplina.</p>
-                  <ul>
-                    <li data-i18n="dop_pillar_pratica_li1">Otimização de ferramental, seus custos e novas tecnologias e técnicas</li>
-                    <li data-i18n="dop_pillar_pratica_li2">Processos e integração com desenvolvimento e produto</li>
-                    <li data-i18n="dop_pillar_pratica_li3">Boas práticas e qualidade dos artefatos</li>
-                  </ul>
-                </article>
-
-                <article class="pillar-panel pillar-panel--pessoas">
-                  <p data-i18n="dop_pillar_pessoas_p">A multidisciplinaridade do design traz complexidade em se manter atualizado, e sua natureza criativa expõe a pessoa designer ao que chamamos de “atrito multilateral”, uma das principais causas de desgaste que pode levar ao burnout e à insatisfação. Criamos mecanismos que sustentam o designer e criam um ambiente saudável e exemplar.</p>
-                  <ul>
-                    <li data-i18n="dop_pillar_pessoas_li1">Mapeamento de competências</li>
-                    <li data-i18n="dop_pillar_pessoas_li2">Programas de capacitação contínua</li>
-                    <li data-i18n="dop_pillar_pessoas_li3">Pesquisa de clima com foco em design</li>
-                    <li data-i18n="dop_pillar_pessoas_li4">Desenho de ladder de carreira (técnico)</li>
-                  </ul>
-                </article>
-
-                <article class="pillar-panel pillar-panel--plataforma">
-                  <p data-i18n="dop_pillar_plataforma_p">Este pilar trata do invisível por trás do design; toda ação pontual necessita de uma estrutura transversal robusta, atuando para manter os pontos conectados e coletar dados que servem de inteligência estratégica para a liderança.</p>
-                  <ul>
-                    <li data-i18n="dop_pillar_plataforma_li1">Design System e componentização</li>
-                    <li data-i18n="dop_pillar_plataforma_li2">Comunidades de prática e cultura</li>
-                    <li data-i18n="dop_pillar_plataforma_li3">Métricas de equipe e inteligência estratégica</li>
-                    <li data-i18n="dop_pillar_plataforma_li4">Gerenciamento de demanda</li>
-                  </ul>
-                </article>
-              </div>
-
+        <div class="steps dop-steps">
+          <div class="step">
+            <div class="step-head">
+              <span class="step-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+              <span class="sn">01</span>
             </div>
-          </fieldset>
+            <h3 data-i18n="dop_s1_h3">Entendendo o contexto</h3>
+            <p data-i18n="dop_s1_p">Alinhamos com a liderança as principais dores percebidas hoje e como elas impactam a operação. O objetivo é imergir na realidade do time e definir expectativas.</p>
+            <ul>
+              <li data-i18n="dop_s1_li1">Reuniões abertas de alinhamento entre liderança e consultoria</li>
+              <li data-i18n="dop_s1_li2">Apresentação do método e da estrutura de pilares</li>
+              <li data-i18n="dop_s1_li3">Formalização do time</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="step-head">
+              <span class="step-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+              <span class="sn">02</span>
+            </div>
+            <h3 data-i18n="dop_s2_h3">Definindo o objetivo</h3>
+            <p data-i18n="dop_s2_p">Depois da imersão, desenhamos em conjunto onde queremos chegar e criamos objetivos tangíveis, que possam ser medidos e acompanhados.</p>
+            <ul>
+              <li data-i18n="dop_s2_li1">Escopo e recorte de atuação</li>
+              <li data-i18n="dop_s2_li2">Objetivos tangíveis a serem alcançados</li>
+              <li data-i18n="dop_s2_li3">Priorização das áreas a serem otimizadas</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="step-head">
+              <span class="step-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="20" y2="16"/><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/></svg></span>
+              <span class="sn">03</span>
+            </div>
+            <h3 data-i18n="dop_s3_h3">Mapeando a maturidade</h3>
+            <p data-i18n="dop_s3_p">Cada método funciona bem para o lugar em que foi criado. Criamos a nossa abordagem a partir da fotografia real do time, baseada em dados, circulando ao redor dos três pilares.</p>
+            <ul>
+              <li data-i18n="dop_s3_li1">Assessment do entendimento de design pelos times multidisciplinares</li>
+              <li data-i18n="dop_s3_li2">Análise de contexto por área e papel do designer</li>
+              <li data-i18n="dop_s3_li3">Pesquisa de clima focada em design</li>
+              <li data-i18n="dop_s3_li4">Ajuste de rota e objetivos</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="step-head">
+              <span class="step-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 2 2 4-4"/><path d="m3 17 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></span>
+              <span class="sn">04</span>
+            </div>
+            <h3 data-i18n="dop_s4_h3">Criando o plano de ação</h3>
+            <p data-i18n="dop_s4_p">Com expectativas alinhadas e realidade mapeada, listamos os insights da descoberta e priorizamos pontos de ação, com dinâmicas de transição que envolvem designers, desenvolvedores e lideranças.</p>
+            <ul>
+              <li data-i18n="dop_s4_li1">Mapa de equipes e contextos com pontos de ação personalizados</li>
+              <li data-i18n="dop_s4_li2">Bases de inteligência escaláveis: fazer uma vez, replicar sempre</li>
+              <li data-i18n="dop_s4_li3">Métricas desdobradas no contexto de cada equipe</li>
+              <li data-i18n="dop_s4_li4">Manuais, comunidades de prática e ações em grupos focais</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="step-head">
+              <span class="step-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+              <span class="sn">05</span>
+            </div>
+            <h3 data-i18n="dop_s5_h3">Medindo impacto</h3>
+            <p data-i18n="dop_s5_p">Depois do entregável principal o trabalho continua: acompanhar a aplicação do plano é tão importante quanto sua robustez estrutural.</p>
+            <ul>
+              <li data-i18n="dop_s5_li1">Dashboard de inteligência de design</li>
+              <li data-i18n="dop_s5_li2">Reajustes de rota e adaptação do plano</li>
+              <li data-i18n="dop_s5_li3">All-hands para evidenciar evolução e captar feedbacks</li>
+              <li data-i18n="dop_s5_li4">Reaplicação da pesquisa de clima</li>
+              <li data-i18n="dop_s5_li5">Definição de próximos passos e encerramento do ciclo</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- BLOCO 3 — VISÃO CORRETA DA OPERAÇÃO COMO UM TODO -->
-    <section class="block" id="dop-operacao">
-      <div class="container">
-        <div class="sec-head">
-          <span class="eyebrow" data-i18n="dop_ops_eyebrow">A operação como um todo</span>
-          <h2 data-i18n="dop_ops_h2">[aguardando conteúdo]</h2>
-        </div>
-        <div class="dop-body">
-          <!-- TODO: sintomas de otimizar a parte sem ver o sistema + consequências -->
-          <p data-i18n="dop_ops_p1">[aguardando conteúdo]</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOCO 4 — NÍVEIS DE MATURIDADE DE DESIGN E PRODUTO -->
+    <!-- BLOCO 4 — NÍVEIS DE MATURIDADE DE CLIENTES (a maturidade da consultoria) -->
     <section class="block" id="dop-maturidade">
+      <div class="dop-deco" aria-hidden="true">
+        <svg class="deco deco-hex deco-hex--maturidade" data-parallax="0.22" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><polygon points="50,3 93,27 93,73 50,97 7,73 7,27"/></svg>
+      </div>
       <div class="container">
         <div class="sec-head">
-          <span class="eyebrow" data-i18n="dop_levels_eyebrow">Maturidade</span>
-          <h2 data-i18n="dop_levels_h2">[aguardando conteúdo]</h2>
-          <p data-i18n="dop_levels_p">[aguardando conteúdo]</p>
+          <span class="eyebrow" data-i18n="dop_levels_eyebrow">Mesmo design em diferentes clientes</span>
+          <h2 data-i18n="dop_levels_h2">A maturidade de design</h2>
+          <p data-i18n="dop_levels_p">Em consultorias, o designer convive com projetos simultâneos, alocações que geram mudança de contexto e clientes em graus distintos de maturidade. Entender essa diferença é o que permite alocar a pessoa certa para cada contexto, transferir conhecimento e elevar, sempre que possível, a maturidade do cliente. É esse entendimento — e a capacidade de agir sobre ele — que compõe a maturidade de design da consultoria e reduz atrito interno</p>
         </div>
         <!-- Quantidade de níveis e textos vêm do conteúdo; ajustar --levels ao total de <li> -->
         <ol class="levels" style="--levels:4">
           <li class="level">
             <div class="level-head">
-              <span class="level-tag" data-i18n="dop_l1_tag">Nível 1</span>
-              <h3 data-i18n="dop_l1_h3">[aguardando conteúdo]</h3>
+              <span class="level-tag" data-i18n="dop_l1_tag">Grau 1</span>
+              <h3 data-i18n="dop_l1_h3">Design pontual</h3>
               <span class="level-scale" aria-hidden="true"><span></span></span>
             </div>
             <div class="level-body">
-              <p><strong data-i18n="dop_l1_looks_label">Como se parece:</strong> <span data-i18n="dop_l1_looks">[aguardando conteúdo]</span></p>
-              <p><strong data-i18n="dop_l1_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l1_unlocks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l1_looks_label">Como se parece:</strong> <span data-i18n="dop_l1_looks">O cliente pede peças isoladas, sem processos ou cultura de design. Cada demanda começa do zero e o conhecimento fica com quem executa.</span></p>
             </div>
           </li>
           <li class="level">
             <div class="level-head">
-              <span class="level-tag" data-i18n="dop_l2_tag">Nível 2</span>
-              <h3 data-i18n="dop_l2_h3">[aguardando conteúdo]</h3>
+              <span class="level-tag" data-i18n="dop_l2_tag">Grau 2</span>
+              <h3 data-i18n="dop_l2_h3">Design organizado</h3>
               <span class="level-scale" aria-hidden="true"><span></span></span>
             </div>
             <div class="level-body">
-              <p><strong data-i18n="dop_l2_looks_label">Como se parece:</strong> <span data-i18n="dop_l2_looks">[aguardando conteúdo]</span></p>
-              <p><strong data-i18n="dop_l2_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l2_unlocks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l2_looks_label">Como se parece:</strong> <span data-i18n="dop_l2_looks">O cliente já tem processos e ferramentas, mas ainda convive com exceções, retrabalho e baixa integração entre projetos.</span></p>
             </div>
           </li>
           <li class="level">
             <div class="level-head">
-              <span class="level-tag" data-i18n="dop_l3_tag">Nível 3</span>
-              <h3 data-i18n="dop_l3_h3">[aguardando conteúdo]</h3>
+              <span class="level-tag" data-i18n="dop_l3_tag">Grau 3</span>
+              <h3 data-i18n="dop_l3_h3">Design integrado</h3>
               <span class="level-scale" aria-hidden="true"><span></span></span>
             </div>
             <div class="level-body">
-              <p><strong data-i18n="dop_l3_looks_label">Como se parece:</strong> <span data-i18n="dop_l3_looks">[aguardando conteúdo]</span></p>
-              <p><strong data-i18n="dop_l3_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l3_unlocks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l3_looks_label">Como se parece:</strong> <span data-i18n="dop_l3_looks">Design atua junto de produto e desenvolvimento, com métricas compartilhadas e decisões apoiadas em dados.</span></p>
             </div>
           </li>
           <li class="level">
             <div class="level-head">
-              <span class="level-tag" data-i18n="dop_l4_tag">Nível 4</span>
-              <h3 data-i18n="dop_l4_h3">[aguardando conteúdo]</h3>
+              <span class="level-tag" data-i18n="dop_l4_tag">Grau 4</span>
+              <h3 data-i18n="dop_l4_h3">Design sistêmico</h3>
               <span class="level-scale" aria-hidden="true"><span></span></span>
             </div>
             <div class="level-body">
-              <p><strong data-i18n="dop_l4_looks_label">Como se parece:</strong> <span data-i18n="dop_l4_looks">[aguardando conteúdo]</span></p>
-              <p><strong data-i18n="dop_l4_unlocks_label">O que destrava:</strong> <span data-i18n="dop_l4_unlocks">[aguardando conteúdo]</span></p>
+              <p><strong data-i18n="dop_l4_looks_label">Como se parece:</strong> <span data-i18n="dop_l4_looks">O cliente tem plataforma, comunidades de prática e inteligência estratégica. O time escala sem depender de pessoas específicas.</span></p>
             </div>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- BLOCO 5 — TIMES DE DESIGN EM CONSULTORIA E INOVAÇÃO -->
-    <section class="block" id="dop-times">
+    <!-- BLOCO 5 — PILARES: três colunas com ícone, nome e tópicos -->
+    <section class="block" id="dop-pilares">
       <div class="container">
         <div class="sec-head">
-          <span class="eyebrow" data-i18n="dop_teams_eyebrow">Consultoria e inovação</span>
-          <h2 data-i18n="dop_teams_h2">[aguardando conteúdo]</h2>
+          <span class="eyebrow" data-i18n="dop_pillars_eyebrow">Estrutura</span>
+          <h2 data-i18n="dop_pillars_h2">Pilares do DesignOps</h2>
+          <p data-i18n="dop_pillars_p">Organizo a abordagem em três grandes áreas principais:</p>
         </div>
-        <div class="dop-body">
-          <!-- TODO: especificidades de times que atendem clientes (multi-projeto, alocação, transferência de conhecimento, reuso entre contas) -->
-          <p data-i18n="dop_teams_p1">[aguardando conteúdo]</p>
+
+        <div class="pillars">
+          <div class="pillars-grid">
+            <article class="pillar">
+              <div class="pillar-head">
+                <span class="pillar-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </span>
+                <h3 data-i18n="dop_pillar_pratica_h3">Prática</h3>
+              </div>
+              <p data-i18n="dop_pillar_pratica_p">Escolher as ferramentas corretas, gerir seu uso e otimizar os processos. Ações que reforçam boas práticas e aumentam a segurança técnica e a maturidade das equipes e de seus clientes na disciplina.</p>
+              <ul>
+                <li data-i18n="dop_pillar_pratica_li1">Otimização de ferramental, seus custos e novas tecnologias e técnicas</li>
+                <li data-i18n="dop_pillar_pratica_li2">Processos e integração com desenvolvimento e produto</li>
+                <li data-i18n="dop_pillar_pratica_li3">Boas práticas e qualidade dos artefatos</li>
+                <li data-i18n="dop_pillar_pratica_li4">Mapeamento das disciplinas executadas, cenários aplicáveis e seus desdobramentos</li>
+              </ul>
+            </article>
+
+            <article class="pillar">
+              <div class="pillar-head">
+                <span class="pillar-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <h3 data-i18n="dop_pillar_pessoas_h3">Pessoas</h3>
+              </div>
+              <p data-i18n="dop_pillar_pessoas_p">A multidisciplinaridade do design traz complexidade em se manter atualizado, e sua natureza criativa expõe a pessoa designer ao que chamamos de “atrito multilateral”, uma das principais causas de desgaste que pode levar ao burnout e à insatisfação. Criamos mecanismos que sustentam o designer e criam um ambiente saudável e exemplar.</p>
+              <ul>
+                <li data-i18n="dop_pillar_pessoas_li1">Mapeamento de competências</li>
+                <li data-i18n="dop_pillar_pessoas_li2">Programas de capacitação contínua</li>
+                <li data-i18n="dop_pillar_pessoas_li3">Pesquisa de clima com foco em design</li>
+                <li data-i18n="dop_pillar_pessoas_li4">Desenho de ladder de carreira (técnico)</li>
+              </ul>
+            </article>
+
+            <article class="pillar">
+              <div class="pillar-head">
+                <span class="pillar-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+                </span>
+                <h3 data-i18n="dop_pillar_plataforma_h3">Plataforma</h3>
+              </div>
+              <p data-i18n="dop_pillar_plataforma_p">Este pilar trata do invisível por trás do design; toda ação pontual necessita de uma estrutura transversal robusta, atuando para manter os pontos conectados e coletar dados que servem de inteligência estratégica para a liderança.</p>
+              <ul>
+                <li data-i18n="dop_pillar_plataforma_li1">Design System e componentização</li>
+                <li data-i18n="dop_pillar_plataforma_li2">Comunidades de prática e cultura</li>
+                <li data-i18n="dop_pillar_plataforma_li3">Métricas de equipe e inteligência estratégica</li>
+                <li data-i18n="dop_pillar_plataforma_li4">Gerenciamento de demanda</li>
+              </ul>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- BLOCO 6 — COMO EU CONDUZO (formato, duração, entregáveis) -->
-    <section class="block" id="dop-conducao">
+    <!-- BLOCO 6 — DIFERENCIAIS (carrossel de cards) -->
+    <section class="block" id="dop-diferenciais">
+      <div class="dop-deco" aria-hidden="true">
+        <svg class="deco deco-cube deco-cube--diff" data-parallax="0.24" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><polygon points="50,8 92,32 50,56 8,32" fill="currentColor" fill-opacity=".07"/><polygon points="50,8 92,32 50,56 8,32"/><polygon points="8,32 50,56 50,98 8,74"/><polygon points="92,32 50,56 50,98 92,74"/></svg>
+        <svg class="deco deco-hex deco-hex--diff" data-parallax="0.14" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><polygon points="50,3 93,27 93,73 50,97 7,73 7,27"/></svg>
+      </div>
       <div class="container">
         <div class="sec-head">
-          <span class="eyebrow" data-i18n="dop_how_eyebrow">Como eu conduzo</span>
-          <h2 data-i18n="dop_how_h2">[aguardando conteúdo]</h2>
-          <p data-i18n="dop_how_p">[aguardando conteúdo]</p>
+          <span class="eyebrow" data-i18n="dop_diff_eyebrow">Por que optar pela consultoria estratégica</span>
+          <h2 data-i18n="dop_diff_h2">Meus diferenciais</h2>
         </div>
-        <!-- TODO: etapas do engajamento (componente .steps) -->
+        <div class="diff-wrap">
+          <div class="diff-track" id="diffTrack" tabindex="0" aria-label="Diferenciais">
+            <article class="diff-card">
+              <span class="diff-icon" aria-hidden="true"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></svg></span>
+              <h3 data-i18n="dop_diff1_h3">Plural</h3>
+              <p data-i18n="dop_diff1_p">Visão de quem esteve dos dois lados: consultor e produto interno.</p>
+            </article>
+            <article class="diff-card">
+              <span class="diff-icon" aria-hidden="true"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><circle cx="8" cy="6" r="2.5"/><line x1="3" y1="12" x2="21" y2="12"/><circle cx="16" cy="12" r="2.5"/><line x1="3" y1="18" x2="21" y2="18"/><circle cx="11" cy="18" r="2.5"/></svg></span>
+              <h3 data-i18n="dop_diff2_h3">Flexível</h3>
+              <p data-i18n="dop_diff2_p">Método robusto, abordagem flexível: Sem receitas de bolo. São 15 anos de experiência em design, 10 em UX.</p>
+            </article>
+            <article class="diff-card">
+              <span class="diff-icon" aria-hidden="true"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+              <h3 data-i18n="dop_diff3_h3">Grandes nomes</h3>
+              <p data-i18n="dop_diff3_p">Vivência de DesignOps em marcas referência em operação de design, como Globo e AB InBev.</p>
+            </article>
+            <article class="diff-card">
+              <span class="diff-icon" aria-hidden="true"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
+              <h3 data-i18n="dop_diff4_h3">Foco em Institutos e Consultorias</h3>
+              <p data-i18n="dop_diff4_p">O design opera diferente em empresas consultoras. Esta visão não está na literatura, mas em anos de prática.</p>
+            </article>
+          </div>
+          <div class="diff-nav">
+            <button class="diff-arrow" type="button" data-dir="-1" aria-label="Diferencial anterior" aria-controls="diffTrack">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="diff-arrow" type="button" data-dir="1" aria-label="Próximo diferencial" aria-controls="diffTrack">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -316,21 +346,13 @@
     <section class="block" id="dop-prova">
       <div class="container exp-wrap">
         <div class="exp-copy">
-          <span class="eyebrow" data-i18n="dop_proof_eyebrow">Onde isso já rodou</span>
-          <h2 data-i18n="dop_proof_h2">[aguardando conteúdo]</h2>
-          <!-- TODO: 1–2 frases de contexto (sem citar nomes de projeto sem autorização) -->
+          <span class="eyebrow" data-i18n="dop_proof_eyebrow">Onde já rodou</span>
+          <h2 data-i18n="dop_proof_h2">Método testado em equipes grandes e produtos de alto impacto</h2>
+          <p data-i18n="dop_proof_p">A base estrutural já rodou em times grandes e produtos de alto impacto — aplicada com a flexibilidade de quem conhece a consultoria de tecnologia.</p>
         </div>
         <div class="logos" data-i18n-aria="dop_proof_logos_aria" aria-label="Empresas em cujos projetos atuei">
-          <span><img src="../public/images/clientes/normalized_bradesco.png" alt="Bradesco"></span>
-          <span><img src="../public/images/clientes/normalized_santander.png" alt="Santander"></span>
           <span><img src="../public/images/clientes/normalized_logo_globo_corporativa_principal_preto.png" alt="Globo"></span>
-          <span><img src="../public/images/clientes/normalized_bosch.png" alt="Bosch"></span>
-          <span class="no-filter"><img src="../public/images/clientes/normalized_redbullcom-logo_double-with-text.png" alt="Red Bull"></span>
           <span><img src="../public/images/clientes/normalized_ab-inbev.png" alt="AB InBev"></span>
-          <span class="logo-lg"><img src="../public/images/clientes/normalized_Ingenico-black-RGB.png" alt="Ingenico"></span>
-          <span class="logo-sm"><img src="../public/images/clientes/normalized_logo-asus-4096.png" alt="Asus"></span>
-          <span class="logo-sm"><img src="../public/images/clientes/normalized_logo-motorola-4096.png" alt="Motorola"></span>
-          <span class="no-filter"><img src="../public/images/clientes/normalized_logo_acqua.png" alt="Acqua Global"></span>
         </div>
       </div>
     </section>
@@ -342,11 +364,15 @@
           <div>
             <span class="eyebrow" data-i18n="cnt_eyebrow">Vamos conversar</span>
             <h2 data-i18n="cnt_h2">Quer destravar soluções e estratégias?</h2>
-            <p class="cd" data-i18n="cnt_p">Me conta o desafio. A gente vê juntos o melhor método para resolver o seu problema — e como seria na prática.</p>
+            <p class="cd" data-i18n="cnt_p">Que tal um papo? Sem compromisso, com total transparência. Vamos falar sobre como transformar seu time de design?</p>
             <div class="clist">
               <a href="mailto:contato@brunoventorin.com.br">
                 <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
                 contato@brunoventorin.com.br
+              </a>
+              <a href="https://wa.me/5519989694295" target="_blank" rel="noopener">
+                <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                WhatsApp · (19) 98969-4295
               </a>
               <a href="https://linkedin.com/in/bruno-ventorin" target="_blank" rel="noopener">
                 <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .92.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>
@@ -358,7 +384,7 @@
             <div class="contact-photo">
               <img src="../public/images/profile.jpg" alt="Bruno Ventorin">
             </div>
-            <a href="mailto:contato@brunoventorin.com.br?subject=DesignOps%20e%20ProductOps" class="btn btn-primary"><span data-i18n="cnt_cta">Mandar uma mensagem</span> <span class="arrow">→</span></a>
+            <a href="https://wa.me/5519989694295" target="_blank" rel="noopener" class="btn btn-primary"><span data-i18n="cnt_cta">Mandar uma mensagem</span> <span class="arrow">→</span></a>
           </div>
         </div>
       </div>
@@ -371,53 +397,37 @@
       <span data-i18n="foot_tagline">Facilitação estratégica · Campinas, SP</span>
       <span>© 2026 Bruno Ventorin</span>
     </div>
-    <div class="container foot-cc">
-      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener license" data-i18n-aria="cc_aria" aria-label="Licença Creative Commons BY-NC-SA 4.0">
-        <img src="../public/images/cc_by-bc-sa.png" alt="CC BY-NC-SA 4.0" />
-      </a>
-      <span data-i18n-html="cc_text">O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.</span>
-    </div>
   </footer>
 
   <script>
     const T = {
       pt: {
-        nav_services: 'O que faço',
-        nav_method: 'Como trabalho',
-        nav_experience: 'Experiência',
-        nav_designops: 'DesignOps',
-        nav_blog: 'Publicações',
-        nav_cta: 'Vamos conversar',
-        nav_menu_open: 'Abrir menu',
-        foot_tagline: 'Facilitação estratégica · Campinas, SP',
-        cc_aria: 'Licença Creative Commons BY-NC-SA 4.0',
-        cc_text: 'O conteúdo deste blog está licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Você pode compartilhar e adaptar com atribuição, sem fins comerciais e sob a mesma licença.',
+        foot_tagline: 'Facilitação estratégica e DesignOps · Campinas, SP',
 
-        dop_hero_eyebrow: 'DesignOps & ProductOps',
-        dop_hero_h1: '[aguardando conteúdo]',
-        dop_hero_p: '[aguardando conteúdo]',
-        dop_hero_cta1: 'Vamos conversar',
-        dop_hero_cta2: 'Ver os níveis de maturidade',
+        dop_hero_eyebrow: 'Estrutura que não engessa. Operação que escala.',
+        dop_hero_h1: 'Consultoria em DesignOps',
+        dop_hero_p1: 'Design é uma área complexa, multifacetada e criativa. Como aliar a volatilidade da área ao ritmo constante da tecnologia?',
+        dop_hero_p2: 'DesignOps é a disciplina que organiza o design, criando bases robustas para otimizar o trabalho, amadurecer a disciplina por todo o time e clientes, criando um ambiente saudável para que os profissionais possam entregar o melhor.',
+        dop_hero_p3: 'Eficiência, eficácia, robustez e inteligência.',
 
-        dop_about_eyebrow: 'O que é DesignOps',
-        dop_about_h2: '[aguardando conteúdo]',
-        dop_about_p1: '[aguardando conteúdo]',
-        dop_about_p2: '[aguardando conteúdo]',
-
-        dop_ops_eyebrow: 'A operação como um todo',
-        dop_ops_h2: '[aguardando conteúdo]',
-        dop_ops_p1: '[aguardando conteúdo]',
+        dop_benefits_eyebrow: 'Resultados',
+        dop_benefits_h2: 'Benefícios',
+        dop_benefit_1: 'Retenção e aumento de engajamento de designers',
+        dop_benefit_2: 'Aumento da maturidade de design, sendo diferencial percebido pelos clientes',
+        dop_benefit_3: 'Inteligência de operação com números e qualidade medidos onde importa',
+        dop_benefit_4: 'Adesão a novas ferramentas de forma crítica, inteligente e sem receitas de bolo',
+        dop_benefit_5: 'Construção de um centro de excelência e desenvolvimento de competências',
 
         dop_pillars_eyebrow: 'Pilares',
         dop_pillars_h2: 'Pilares do DesignOps',
         dop_pillars_p: 'Organizo a abordagem em três grandes áreas principais:',
-        dop_pillars_legend: 'Escolha um pilar do DesignOps',
 
         dop_pillar_pratica_h3: 'Prática',
         dop_pillar_pratica_p: 'Escolher as ferramentas corretas, gerir seu uso e otimizar os processos. Ações que reforçam boas práticas e aumentam a segurança técnica e a maturidade das equipes e de seus clientes na disciplina.',
         dop_pillar_pratica_li1: 'Otimização de ferramental, seus custos e novas tecnologias e técnicas',
         dop_pillar_pratica_li2: 'Processos e integração com desenvolvimento e produto',
         dop_pillar_pratica_li3: 'Boas práticas e qualidade dos artefatos',
+        dop_pillar_pratica_li4: 'Mapeamento das disciplinas executadas, cenários aplicáveis e seus desdobramentos',
 
         dop_pillar_pessoas_h3: 'Pessoas',
         dop_pillar_pessoas_p: 'A multidisciplinaridade do design traz complexidade em se manter atualizado, e sua natureza criativa expõe a pessoa designer ao que chamamos de “atrito multilateral”, uma das principais causas de desgaste que pode levar ao burnout e à insatisfação. Criamos mecanismos que sustentam o designer e criam um ambiente saudável e exemplar.',
@@ -434,36 +444,74 @@
         dop_pillar_plataforma_li4: 'Gerenciamento de demanda',
 
         dop_levels_eyebrow: 'Maturidade',
-        dop_levels_h2: '[aguardando conteúdo]',
-        dop_levels_p: '[aguardando conteúdo]',
-        dop_l1_tag: 'Nível 1', dop_l1_h3: '[aguardando conteúdo]',
-        dop_l1_looks_label: 'Como se parece:', dop_l1_looks: '[aguardando conteúdo]',
-        dop_l1_unlocks_label: 'O que destrava:', dop_l1_unlocks: '[aguardando conteúdo]',
-        dop_l2_tag: 'Nível 2', dop_l2_h3: '[aguardando conteúdo]',
-        dop_l2_looks_label: 'Como se parece:', dop_l2_looks: '[aguardando conteúdo]',
-        dop_l2_unlocks_label: 'O que destrava:', dop_l2_unlocks: '[aguardando conteúdo]',
-        dop_l3_tag: 'Nível 3', dop_l3_h3: '[aguardando conteúdo]',
-        dop_l3_looks_label: 'Como se parece:', dop_l3_looks: '[aguardando conteúdo]',
-        dop_l3_unlocks_label: 'O que destrava:', dop_l3_unlocks: '[aguardando conteúdo]',
-        dop_l4_tag: 'Nível 4', dop_l4_h3: '[aguardando conteúdo]',
-        dop_l4_looks_label: 'Como se parece:', dop_l4_looks: '[aguardando conteúdo]',
-        dop_l4_unlocks_label: 'O que destrava:', dop_l4_unlocks: '[aguardando conteúdo]',
+        dop_levels_h2: 'A maturidade de design da consultoria',
+        dop_levels_p: 'Em consultorias e institutos de inovação e tecnologia, o design convive com projetos simultâneos, alocação em mudança e clientes em graus distintos de maturidade. Entender essa diferença é o que permite alocar o designer certo para cada contexto, transferir conhecimento e elevar, sempre que possível, a maturidade do cliente. É esse entendimento — e a capacidade de agir sobre ele — que compõe a maturidade de design da consultoria.',
+        dop_l1_tag: 'Grau 1', dop_l1_h3: 'Design pontual',
+        dop_l1_looks_label: 'Como se parece:', dop_l1_looks: 'O cliente pede peças isoladas, sem processos ou cultura de design. Cada demanda começa do zero e o conhecimento fica com quem executa.',
+        dop_l2_tag: 'Grau 2', dop_l2_h3: 'Design organizado',
+        dop_l2_looks_label: 'Como se parece:', dop_l2_looks: 'O cliente já tem processos e ferramentas, mas ainda convive com exceções, retrabalho e baixa integração entre projetos.',
+        dop_l3_tag: 'Grau 3', dop_l3_h3: 'Design integrado',
+        dop_l3_looks_label: 'Como se parece:', dop_l3_looks: 'Design atua junto de produto e desenvolvimento, com métricas compartilhadas e decisões apoiadas em dados.',
+        dop_l4_tag: 'Grau 4', dop_l4_h3: 'Design sistêmico',
+        dop_l4_looks_label: 'Como se parece:', dop_l4_looks: 'O cliente tem plataforma, comunidades de prática e inteligência estratégica. O time escala sem depender de pessoas específicas.',
 
-        dop_teams_eyebrow: 'Consultoria e inovação',
-        dop_teams_h2: '[aguardando conteúdo]',
-        dop_teams_p1: '[aguardando conteúdo]',
+        dop_how_eyebrow: 'Método',
+        dop_how_h2: 'Como funciona',
+        dop_how_p: 'Aliando estrutura com flexibilidade, o método aplicado fornece uma base estrutural já testada no mercado em equipes grandes e produtos de alto impacto, mas com a flexibilidade de quem conhece bem o mundo da consultoria de tecnologia. O projeto pode ser dividido em cinco passos:',
 
-        dop_how_eyebrow: 'Como eu conduzo',
-        dop_how_h2: '[aguardando conteúdo]',
-        dop_how_p: '[aguardando conteúdo]',
+        dop_s1_h3: 'Entendendo o contexto',
+        dop_s1_p: 'Alinhamos com a liderança as principais dores percebidas hoje e como elas impactam a operação. O objetivo é imergir na realidade do time e definir expectativas.',
+        dop_s1_li1: 'Reuniões abertas de alinhamento entre liderança e consultoria',
+        dop_s1_li2: 'Apresentação do método e da estrutura de pilares',
+        dop_s1_li3: 'Formalização do time',
+
+        dop_s2_h3: 'Definindo o objetivo',
+        dop_s2_p: 'Depois da imersão, desenhamos em conjunto onde queremos chegar e criamos objetivos tangíveis, que possam ser medidos e acompanhados.',
+        dop_s2_li1: 'Escopo e recorte de atuação',
+        dop_s2_li2: 'Objetivos tangíveis a serem alcançados',
+        dop_s2_li3: 'Priorização das áreas a serem otimizadas',
+
+        dop_s3_h3: 'Mapeando a maturidade',
+        dop_s3_p: 'Cada método funciona bem para o lugar em que foi criado. Criamos a nossa abordagem a partir da fotografia real do time, baseada em dados, circulando ao redor dos três pilares.',
+        dop_s3_li1: 'Assessment do entendimento de design pelos times multidisciplinares',
+        dop_s3_li2: 'Análise de contexto por área e papel do designer',
+        dop_s3_li3: 'Pesquisa de clima focada em design',
+        dop_s3_li4: 'Ajuste de rota e objetivos',
+
+        dop_s4_h3: 'Criando o plano de ação',
+        dop_s4_p: 'Com expectativas alinhadas e realidade mapeada, listamos os insights da descoberta e priorizamos pontos de ação, com dinâmicas de transição que envolvem designers, desenvolvedores e lideranças.',
+        dop_s4_li1: 'Mapa de equipes e contextos com pontos de ação personalizados',
+        dop_s4_li2: 'Bases de inteligência escaláveis: fazer uma vez, replicar sempre',
+        dop_s4_li3: 'Métricas desdobradas no contexto de cada equipe',
+        dop_s4_li4: 'Manuais, comunidades de prática e ações em grupos focais',
+
+        dop_s5_h3: 'Medindo impacto',
+        dop_s5_p: 'Depois do entregável principal o trabalho continua: acompanhar a aplicação do plano é tão importante quanto sua robustez estrutural.',
+        dop_s5_li1: 'Dashboard de inteligência de design',
+        dop_s5_li2: 'Reajustes de rota e adaptação do plano',
+        dop_s5_li3: 'All-hands para evidenciar evolução e captar feedbacks',
+        dop_s5_li4: 'Reaplicação da pesquisa de clima',
+        dop_s5_li5: 'Definição de próximos passos e encerramento do ciclo',
+
+        dop_diff_eyebrow: 'Por que eu',
+        dop_diff_h2: 'Diferenciais',
+        dop_diff1_h3: 'Plural',
+        dop_diff1_p: 'Visão de quem esteve dos dois lados: consultor e produto interno.',
+        dop_diff2_h3: 'Flexível',
+        dop_diff2_p: 'Método robusto, abordagem flexível. Sem receitas de bolo.',
+        dop_diff3_h3: 'Grandes nomes',
+        dop_diff3_p: 'Experiência em marcas referência em operação de design, como Globo e AB InBev.',
+        dop_diff4_h3: 'Foco em Institutos e Consultorias',
+        dop_diff4_p: 'O design opera diferente em empresas consultoras. Essa visão não está na literatura.',
 
         dop_proof_eyebrow: 'Onde isso já rodou',
-        dop_proof_h2: '[aguardando conteúdo]',
+        dop_proof_h2: 'Método testado em equipes grandes e produtos de alto impacto',
+        dop_proof_p: 'A base estrutural já rodou em times grandes e produtos de alto impacto — aplicada com a flexibilidade de quem conhece a consultoria de tecnologia.',
         dop_proof_logos_aria: 'Empresas em cujos projetos atuei',
 
         cnt_eyebrow: 'Vamos conversar',
         cnt_h2: 'Quer destravar soluções e estratégias?',
-        cnt_p: 'Me conta o desafio. A gente vê juntos o melhor método para resolver o seu problema — e como seria na prática.',
+        cnt_p: 'Que tal um papo? Mostro o método mais a fundo, ouço suas preocupações e saímos com mais certezas. Sem compromisso, com total transparência.',
         cnt_cta: 'Mandar uma mensagem',
       },
       // EN ainda não existe: com o mapa vazio o seletor de idioma fica oculto.
@@ -471,13 +519,7 @@
       en: {},
     };
 
-    // Página PT-only na v1. Quando T.en ganhar chaves, trocar por:
-    // localStorage.getItem('lang') || (navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en')
-    function getLang() { return 'pt'; }
-
-    function setLang(lang) {
-      applyLang(lang);
-    }
+    // Página PT-only na v1. Quando T.en ganhar chaves, basta preencher o mapa.
     function applyLang(lang) {
       document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -492,36 +534,11 @@
         const v = T[lang][el.dataset.i18nAria];
         if (v !== undefined) el.setAttribute('aria-label', v);
       });
-      document.querySelectorAll('.lang-switcher button').forEach(btn =>
-        btn.classList.toggle('active', btn.dataset.lang === lang)
-      );
     }
-    applyLang(getLang());
-
-    // Sem traduções, o seletor PT·EN não deve aparecer (clicar em EN deixaria a página em PT com lang="en").
-    if (!Object.keys(T.en).length) {
-      document.querySelectorAll('.lang-switcher').forEach(el => el.setAttribute('hidden', ''));
-    }
+    applyLang('pt');
   </script>
 
   <script>
-    function toggleMenu(btn) {
-      const hdr = document.getElementById('hdr');
-      const open = hdr.classList.toggle('menu-open');
-      btn.setAttribute('aria-expanded', open);
-      btn.querySelector('.ico-menu').style.display = open ? 'none' : '';
-      btn.querySelector('.ico-close').style.display = open ? '' : 'none';
-      document.getElementById('mobileNav').setAttribute('aria-hidden', !open);
-    }
-    function closeMenu() {
-      const hdr = document.getElementById('hdr');
-      hdr.classList.remove('menu-open');
-      const btn = document.querySelector('.menu-btn');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.querySelector('.ico-menu').style.display = '';
-      btn.querySelector('.ico-close').style.display = 'none';
-      document.getElementById('mobileNav').setAttribute('aria-hidden', 'true');
-    }
     const hdr = document.getElementById('hdr');
     addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10));
 
@@ -529,6 +546,53 @@
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     }), { threshold: 0 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // revela os blocos de cada seção conforme entram na viewport
+    document.querySelectorAll('.sec-head,.benefits li,.step,.level,.pillar,.diff-wrap,.exp-copy,.logos,.contact-grid').forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i % 4 * .06) + 's';
+      io.observe(el);
+    });
+
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const decoItems = [...document.querySelectorAll('[data-parallax]')];
+    if (decoItems.length && !reduceMotion.matches) {
+      let raf = 0;
+      const updateParallax = () => {
+        raf = 0;
+        const vh = innerHeight;
+        decoItems.forEach(el => {
+          const box = el.parentElement.getBoundingClientRect();
+          const progress = (box.top + box.height / 2 - vh / 2) / vh;
+          el.style.transform = `translate3d(0, ${(progress * Number(el.dataset.parallax) * 100).toFixed(2)}px, 0)`;
+        });
+      };
+      const schedule = () => { if (!raf) raf = requestAnimationFrame(updateParallax); };
+      addEventListener('scroll', schedule, { passive: true });
+      addEventListener('resize', schedule);
+      updateParallax();
+    }
+
+    const diffTrack = document.getElementById('diffTrack');
+    if (diffTrack) {
+      const arrows = document.querySelectorAll('.diff-arrow');
+      const updateArrows = () => {
+        const max = diffTrack.scrollWidth - diffTrack.clientWidth;
+        arrows[0].disabled = diffTrack.scrollLeft <= 1;
+        arrows[1].disabled = diffTrack.scrollLeft >= max - 1;
+      };
+      arrows.forEach(btn => btn.addEventListener('click', () => {
+        const card = diffTrack.querySelector('.diff-card');
+        const gap = parseFloat(getComputedStyle(diffTrack).gap) || 0;
+        diffTrack.scrollBy({
+          left: Number(btn.dataset.dir) * (card.getBoundingClientRect().width + gap),
+          behavior: 'smooth'
+        });
+      }));
+      diffTrack.addEventListener('scroll', updateArrows, { passive: true });
+      addEventListener('resize', updateArrows);
+      updateArrows();
+    }
   </script>
 </body>
 </html>
