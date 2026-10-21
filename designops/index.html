@@ -400,126 +400,22 @@
   </footer>
 
   <script>
-    const T = {
-      pt: {
-        foot_tagline: 'Facilitação estratégica e DesignOps · Campinas, SP',
+    // O texto em português é o próprio markup: ele é capturado no load.
+    // Assim, editar o HTML nunca é sobrescrito por um dicionário desatualizado.
+    const T = { pt: {}, en: {} };
 
-        dop_hero_eyebrow: 'Estrutura que não engessa. Operação que escala.',
-        dop_hero_h1: 'Consultoria em DesignOps',
-        dop_hero_p1: 'Design é uma área complexa, multifacetada e criativa. Como aliar a volatilidade da área ao ritmo constante da tecnologia?',
-        dop_hero_p2: 'DesignOps é a disciplina que organiza o design, criando bases robustas para otimizar o trabalho, amadurecer a disciplina por todo o time e clientes, criando um ambiente saudável para que os profissionais possam entregar o melhor.',
-        dop_hero_p3: 'Eficiência, eficácia, robustez e inteligência.',
+    function capturePt() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        T.pt[el.dataset.i18n] = el.textContent;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        T.pt[el.dataset.i18nHtml] = el.innerHTML;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        T.pt[el.dataset.i18nAria] = el.getAttribute('aria-label');
+      });
+    }
 
-        dop_benefits_eyebrow: 'Resultados',
-        dop_benefits_h2: 'Benefícios',
-        dop_benefit_1: 'Retenção e aumento de engajamento de designers',
-        dop_benefit_2: 'Aumento da maturidade de design, sendo diferencial percebido pelos clientes',
-        dop_benefit_3: 'Inteligência de operação com números e qualidade medidos onde importa',
-        dop_benefit_4: 'Adesão a novas ferramentas de forma crítica, inteligente e sem receitas de bolo',
-        dop_benefit_5: 'Construção de um centro de excelência e desenvolvimento de competências',
-
-        dop_pillars_eyebrow: 'Pilares',
-        dop_pillars_h2: 'Pilares do DesignOps',
-        dop_pillars_p: 'Organizo a abordagem em três grandes áreas principais:',
-
-        dop_pillar_pratica_h3: 'Prática',
-        dop_pillar_pratica_p: 'Escolher as ferramentas corretas, gerir seu uso e otimizar os processos. Ações que reforçam boas práticas e aumentam a segurança técnica e a maturidade das equipes e de seus clientes na disciplina.',
-        dop_pillar_pratica_li1: 'Otimização de ferramental, seus custos e novas tecnologias e técnicas',
-        dop_pillar_pratica_li2: 'Processos e integração com desenvolvimento e produto',
-        dop_pillar_pratica_li3: 'Boas práticas e qualidade dos artefatos',
-        dop_pillar_pratica_li4: 'Mapeamento das disciplinas executadas, cenários aplicáveis e seus desdobramentos',
-
-        dop_pillar_pessoas_h3: 'Pessoas',
-        dop_pillar_pessoas_p: 'A multidisciplinaridade do design traz complexidade em se manter atualizado, e sua natureza criativa expõe a pessoa designer ao que chamamos de “atrito multilateral”, uma das principais causas de desgaste que pode levar ao burnout e à insatisfação. Criamos mecanismos que sustentam o designer e criam um ambiente saudável e exemplar.',
-        dop_pillar_pessoas_li1: 'Mapeamento de competências',
-        dop_pillar_pessoas_li2: 'Programas de capacitação contínua',
-        dop_pillar_pessoas_li3: 'Pesquisa de clima com foco em design',
-        dop_pillar_pessoas_li4: 'Desenho de ladder de carreira (técnico)',
-
-        dop_pillar_plataforma_h3: 'Plataforma',
-        dop_pillar_plataforma_p: 'Este pilar trata do invisível por trás do design; toda ação pontual necessita de uma estrutura transversal robusta, atuando para manter os pontos conectados e coletar dados que servem de inteligência estratégica para a liderança.',
-        dop_pillar_plataforma_li1: 'Design System e componentização',
-        dop_pillar_plataforma_li2: 'Comunidades de prática e cultura',
-        dop_pillar_plataforma_li3: 'Métricas de equipe e inteligência estratégica',
-        dop_pillar_plataforma_li4: 'Gerenciamento de demanda',
-
-        dop_levels_eyebrow: 'Maturidade',
-        dop_levels_h2: 'A maturidade de design da consultoria',
-        dop_levels_p: 'Em consultorias e institutos de inovação e tecnologia, o design convive com projetos simultâneos, alocação em mudança e clientes em graus distintos de maturidade. Entender essa diferença é o que permite alocar o designer certo para cada contexto, transferir conhecimento e elevar, sempre que possível, a maturidade do cliente. É esse entendimento — e a capacidade de agir sobre ele — que compõe a maturidade de design da consultoria.',
-        dop_l1_tag: 'Grau 1', dop_l1_h3: 'Design pontual',
-        dop_l1_looks_label: 'Como se parece:', dop_l1_looks: 'O cliente pede peças isoladas, sem processos ou cultura de design. Cada demanda começa do zero e o conhecimento fica com quem executa.',
-        dop_l2_tag: 'Grau 2', dop_l2_h3: 'Design organizado',
-        dop_l2_looks_label: 'Como se parece:', dop_l2_looks: 'O cliente já tem processos e ferramentas, mas ainda convive com exceções, retrabalho e baixa integração entre projetos.',
-        dop_l3_tag: 'Grau 3', dop_l3_h3: 'Design integrado',
-        dop_l3_looks_label: 'Como se parece:', dop_l3_looks: 'Design atua junto de produto e desenvolvimento, com métricas compartilhadas e decisões apoiadas em dados.',
-        dop_l4_tag: 'Grau 4', dop_l4_h3: 'Design sistêmico',
-        dop_l4_looks_label: 'Como se parece:', dop_l4_looks: 'O cliente tem plataforma, comunidades de prática e inteligência estratégica. O time escala sem depender de pessoas específicas.',
-
-        dop_how_eyebrow: 'Método',
-        dop_how_h2: 'Como funciona',
-        dop_how_p: 'Aliando estrutura com flexibilidade, o método aplicado fornece uma base estrutural já testada no mercado em equipes grandes e produtos de alto impacto, mas com a flexibilidade de quem conhece bem o mundo da consultoria de tecnologia. O projeto pode ser dividido em cinco passos:',
-
-        dop_s1_h3: 'Entendendo o contexto',
-        dop_s1_p: 'Alinhamos com a liderança as principais dores percebidas hoje e como elas impactam a operação. O objetivo é imergir na realidade do time e definir expectativas.',
-        dop_s1_li1: 'Reuniões abertas de alinhamento entre liderança e consultoria',
-        dop_s1_li2: 'Apresentação do método e da estrutura de pilares',
-        dop_s1_li3: 'Formalização do time',
-
-        dop_s2_h3: 'Definindo o objetivo',
-        dop_s2_p: 'Depois da imersão, desenhamos em conjunto onde queremos chegar e criamos objetivos tangíveis, que possam ser medidos e acompanhados.',
-        dop_s2_li1: 'Escopo e recorte de atuação',
-        dop_s2_li2: 'Objetivos tangíveis a serem alcançados',
-        dop_s2_li3: 'Priorização das áreas a serem otimizadas',
-
-        dop_s3_h3: 'Mapeando a maturidade',
-        dop_s3_p: 'Cada método funciona bem para o lugar em que foi criado. Criamos a nossa abordagem a partir da fotografia real do time, baseada em dados, circulando ao redor dos três pilares.',
-        dop_s3_li1: 'Assessment do entendimento de design pelos times multidisciplinares',
-        dop_s3_li2: 'Análise de contexto por área e papel do designer',
-        dop_s3_li3: 'Pesquisa de clima focada em design',
-        dop_s3_li4: 'Ajuste de rota e objetivos',
-
-        dop_s4_h3: 'Criando o plano de ação',
-        dop_s4_p: 'Com expectativas alinhadas e realidade mapeada, listamos os insights da descoberta e priorizamos pontos de ação, com dinâmicas de transição que envolvem designers, desenvolvedores e lideranças.',
-        dop_s4_li1: 'Mapa de equipes e contextos com pontos de ação personalizados',
-        dop_s4_li2: 'Bases de inteligência escaláveis: fazer uma vez, replicar sempre',
-        dop_s4_li3: 'Métricas desdobradas no contexto de cada equipe',
-        dop_s4_li4: 'Manuais, comunidades de prática e ações em grupos focais',
-
-        dop_s5_h3: 'Medindo impacto',
-        dop_s5_p: 'Depois do entregável principal o trabalho continua: acompanhar a aplicação do plano é tão importante quanto sua robustez estrutural.',
-        dop_s5_li1: 'Dashboard de inteligência de design',
-        dop_s5_li2: 'Reajustes de rota e adaptação do plano',
-        dop_s5_li3: 'All-hands para evidenciar evolução e captar feedbacks',
-        dop_s5_li4: 'Reaplicação da pesquisa de clima',
-        dop_s5_li5: 'Definição de próximos passos e encerramento do ciclo',
-
-        dop_diff_eyebrow: 'Por que eu',
-        dop_diff_h2: 'Diferenciais',
-        dop_diff1_h3: 'Plural',
-        dop_diff1_p: 'Visão de quem esteve dos dois lados: consultor e produto interno.',
-        dop_diff2_h3: 'Flexível',
-        dop_diff2_p: 'Método robusto, abordagem flexível. Sem receitas de bolo.',
-        dop_diff3_h3: 'Grandes nomes',
-        dop_diff3_p: 'Experiência em marcas referência em operação de design, como Globo e AB InBev.',
-        dop_diff4_h3: 'Foco em Institutos e Consultorias',
-        dop_diff4_p: 'O design opera diferente em empresas consultoras. Essa visão não está na literatura.',
-
-        dop_proof_eyebrow: 'Onde isso já rodou',
-        dop_proof_h2: 'Método testado em equipes grandes e produtos de alto impacto',
-        dop_proof_p: 'A base estrutural já rodou em times grandes e produtos de alto impacto — aplicada com a flexibilidade de quem conhece a consultoria de tecnologia.',
-        dop_proof_logos_aria: 'Empresas em cujos projetos atuei',
-
-        cnt_eyebrow: 'Vamos conversar',
-        cnt_h2: 'Quer destravar soluções e estratégias?',
-        cnt_p: 'Que tal um papo? Mostro o método mais a fundo, ouço suas preocupações e saímos com mais certezas. Sem compromisso, com total transparência.',
-        cnt_cta: 'Mandar uma mensagem',
-      },
-      // EN ainda não existe: com o mapa vazio o seletor de idioma fica oculto.
-      // Para publicar em inglês, basta preencher as mesmas chaves aqui.
-      en: {},
-    };
-
-    // Página PT-only na v1. Quando T.en ganhar chaves, basta preencher o mapa.
     function applyLang(lang) {
       document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -535,6 +431,7 @@
         if (v !== undefined) el.setAttribute('aria-label', v);
       });
     }
+    capturePt();
     applyLang('pt');
   </script>
 
