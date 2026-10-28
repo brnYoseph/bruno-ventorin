@@ -31,6 +31,9 @@ secrets.*
 # material de referência (nunca publicar: o GitHub Pages serve tudo que é commitado)
 /references/
 
+# editor
+/.vscode/
+
 # OS
 .DS_Store
 Thumbs.db
